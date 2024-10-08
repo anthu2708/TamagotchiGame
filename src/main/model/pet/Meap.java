@@ -1,5 +1,9 @@
 package model.pet;
 
+/**
+ * Represents a Meap pet with specific behaviors for playing, getting injured, and being petted.
+ * A Meap has a name, happiness, hunger, cleanliness, and health levels.
+ */
 public class Meap extends Pet {
     public Meap(String name) {
         super(name, "Meap");

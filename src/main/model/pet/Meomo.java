@@ -1,5 +1,9 @@
 package model.pet;
 
+/**
+ * Represents a Meomo pet with specific behaviors for playing, getting injured, and being petted.
+ * A Meomo has a name, happiness, hunger, cleanliness, and health levels.
+ */
 public class Meomo extends Pet {
     public Meomo(String name) {
         super(name, "Meomo");

@@ -1,5 +1,9 @@
 package model.pet;
 
+/**
+ * Represents a Donukie pet with specific behaviors for playing, getting injured, and being petted.
+ * A Donukie has a name, happiness, hunger, cleanliness, and health levels.
+ */
 public class Donukie extends Pet {
     public Donukie(String name) {
         super(name, "Donukie");
