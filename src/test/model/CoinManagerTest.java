@@ -14,7 +14,7 @@ class CoinManagerTest {
     }
 
     @Test
-    void testGetValue() {
+    void testConstructor() {
         assertEquals(100, coinManager.getValue());
     }
 

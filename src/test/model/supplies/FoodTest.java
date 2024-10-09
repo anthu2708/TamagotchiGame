@@ -14,8 +14,6 @@ class FoodTest {
 
     @Test
     void testFoodConstructor() {
-
-        // Assert
         assertEquals("Apple", food.getName());
         assertEquals(95, food.getNutritionValue());
         assertEquals(1, food.getCost());

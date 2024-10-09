@@ -17,7 +17,7 @@ public class DonukieTest {
     }
 
     @Test
-    void testInitialValues() {
+    void testConstructor() {
         assertEquals("Fluffy", donukie.getName());
         assertEquals("Donukie", donukie.getType());
         assertEquals(50, donukie.getHunger());

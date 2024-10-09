@@ -15,7 +15,7 @@ public class MeapTest {
     }
 
     @Test
-    void testInitialValues() {
+    void testConstructor() {
         assertEquals("Fluffy", meap.getName());
         assertEquals("Meap", meap.getType());
         assertEquals(50, meap.getHunger());        // Assuming default hunger starts at 50

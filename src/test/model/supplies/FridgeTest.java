@@ -12,15 +12,13 @@ class FridgeTest {
 
     @BeforeEach
     void setUp() {
-        // Arrange: Initialize a Fridge and some Food items before each test
         fridge = new Fridge();
         apple = new Food("Apple", 10, 2);
         banana = new Food("Banana", 8, 1);
     }
 
     @Test
-    void testIsEmptyInitially() {
-        // Act & Assert
+    void testConstructor() {
         assertTrue(fridge.isEmpty(), "Fridge should be empty initially.");
     }
 
@@ -63,7 +61,6 @@ class FridgeTest {
 
     @Test
     void testRemoveFoodQuantity() {
-        // Arrange
         fridge.addFood(apple);
         fridge.addFood(apple);
         fridge.removeFood(apple); 
@@ -78,7 +75,7 @@ class FridgeTest {
         fridge.addFood(banana);
         assertEquals(apple, fridge.getFoodByIndex(1));
         assertEquals(banana, fridge.getFoodByIndex(2));
-        assertNull(fridge.getFoodByIndex(3));
+        assertEquals(null, fridge.getFoodByIndex(3));
     }
 
     @Test

@@ -16,7 +16,7 @@ public class MeomoTest {
     }
 
     @Test
-    void testInitialValues() {
+    void testConstructor() {
         assertEquals("Mittens", meomo.getName());
         assertEquals("Meomo", meomo.getType());
         assertEquals(50, meomo.getHunger());

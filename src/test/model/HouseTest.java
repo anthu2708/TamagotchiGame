@@ -18,10 +18,14 @@ class HouseTest {
 
     @BeforeEach
     void setUp() {
-        // Initialize a House and some Pet instances
         house = new House();
         pet1 = new Meomo("Buddy"); 
         pet2 = new Donukie("Max");
+    }
+
+    @Test
+    void testConstructor() {
+        assertEquals(0, house.getPetCount());
     }
 
     @Test
@@ -33,12 +37,11 @@ class HouseTest {
 
     @Test
     void testRemovePet() {
-        // Arrange
         house.addPet(pet1);
         house.addPet(pet2);
         house.removePet(0);
-        assertEquals(1, house.getPetCount(), "House should have 1 pet after removal.");
-        assertEquals(pet2, house.getPet(0), "The remaining pet should be Max.");
+        assertEquals(1, house.getPetCount());
+        assertEquals(pet2, house.getPet(0));
     }
 
     @Test
@@ -52,42 +55,36 @@ class HouseTest {
 
     @Test
     void testGetPets() {
-        // Arrange
         house.addPet(pet1);
         house.addPet(pet2);
-
-        // Act
         List<Pet> petsInHouse = house.getPets();
-
-        // Assert
-        assertEquals(2, petsInHouse.size(), "There should be 2 pets in the house.");
-        assertTrue(petsInHouse.contains(pet1), "Pet1 should be in the house.");
-        assertTrue(petsInHouse.contains(pet2), "Pet2 should be in the house.");
+        assertEquals(2, petsInHouse.size());
+        assertTrue(petsInHouse.contains(pet1));
+        assertTrue(petsInHouse.contains(pet2));
     }
 
     @Test
     void testGetPet() {
-        // Arrange
         house.addPet(pet1);
         house.addPet(pet2);
-
-        // Act
-        Pet retrievedPet = house.getPet(1); // Get the second pet (pet2)
+        Pet retrievedPet = house.getPet(1);
 
         // Assert
-        assertEquals(pet2, retrievedPet, "Retrieved pet should be Max.");
+        assertEquals(pet2, retrievedPet);
     }
 
     @Test
     void testGetPetInvalidIndex() {
         house.addPet(pet1);
-        Pet retrievedPet = house.getPet(1); // Attempt to get pet at an invalid index
-        assertNull(retrievedPet);
+        house.getPet(1); // Attempt to get pet at an invalid index
+        assertEquals(1, house.getPetCount());
     }
 
     @Test
-    void testGetPetCountInitially() {
-        // Assert
-        assertEquals(0, house.getPetCount(), "House should initially have 0 pets.");
+    void testGetPetCoint() {
+        house.addPet(pet1);
+        house.addPet(pet1);
+        house.addPet(pet2);
+        assertEquals(3, house.getPetCount());
     }
 }

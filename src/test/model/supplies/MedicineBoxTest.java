@@ -13,14 +13,13 @@ class MedicineBoxTest {
 
     @BeforeEach
     void setUp() {
-        // Arrange: Initialize a MedicineBox and some Pill items before each test
         medicineBox = new MedicineBox();
         vitaminC = new Pill("Vitamin C", 10, 5, 0, 0);
         painRelief = new Pill("Pain Relief", 20, 2, 5, 10);
     }
 
     @Test
-    void testIsEmptyInitially() {
+    void testConstructor() {
         assertTrue(medicineBox.isEmpty());
     }
 
@@ -95,6 +94,6 @@ class MedicineBoxTest {
         // Act & Assert
         assertEquals(vitaminC, medicineBox.getPillByIndex(1));
         assertEquals(painRelief, medicineBox.getPillByIndex(2));
-        assertNull(medicineBox.getPillByIndex(3));
+        assertEquals(null, medicineBox.getPillByIndex(3));
     }
 }

@@ -10,13 +10,11 @@ class PillTest {
 
     @BeforeEach
     void setUp() {
-        // Arrange: Initialize a Pill object before each test
         pill = new Pill("Health Pill", 10, 5, 20, 15);
     }
 
     @Test
     void testPillConstructor() {
-        // Act & Assert
         assertEquals("Health Pill", pill.getName());
         assertEquals(10, pill.getCost());
         assertEquals(5, pill.getNutrition());
