@@ -108,8 +108,8 @@ public abstract class Pet {
 
     // MODIFIES: this
     // EFFECTS: Set injury status to true if need pill
-    public void setInjured(){
-        if (needsPill()){
+    public void setInjured() {
+        if (needsPill()) {
             this.isInjuried = true;
         } else {
             this.isInjuried = false;
