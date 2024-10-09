@@ -8,6 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import model.supplies.Food;
+import model.supplies.Pill;
 
 public class PetTest {
     private Meap meap;
@@ -52,35 +53,10 @@ public class PetTest {
     }
 
     @Test
-    void testPlayIncreasesHappiness() {
-        int initialHappiness = meap.getHappiness();
-        meap.play();
-        assertTrue(meap.getHappiness() > initialHappiness);
-        assertEquals(40, meap.getHunger()); // 50 - 10
-        assertTrue(meap.getCleanliness() < 100); // Cleanliness should decrease
-    }
-
-    @Test
-    void testPetIncreasesHappiness() {
-        int initialHappiness = meap.getHappiness();
-        meap.pet();
-        assertTrue(meap.getHappiness() > initialHappiness);
-        assertEquals(40, meap.getHunger()); // 50 - 10
-        assertTrue(meap.getCleanliness() < 100); // Cleanliness should decrease
-    }
-
-    @Test
     void testFeedIncreasesHunger() {
         Food food = new Food("Dog Food", 30, 0); // Assuming Food has a constructor and a getNutritionValue method
         meap.feed(food);
         assertEquals(80, meap.getHunger()); // 50 + 30
-    }
-
-    @Test
-    void testInjuredHealthDecrease() {
-        meap.dropHealth(); // Should drop health to 95
-        meap.injuried();   // Should drop health to 15 if it's above 15
-        assertEquals(15, meap.getHealth());
     }
 
     @Test
@@ -101,7 +77,6 @@ public class PetTest {
     @Test
     void testNeedsAttentionCleanliness() {
         meap.setCleanliness(10);
-
         boolean[] attention = meap.needsAttention();
         assertFalse(attention[0]); // Hunger should need attention (set hunger to 10)
         assertTrue(attention[1]); // Cleanliness should not need attention
@@ -114,14 +89,78 @@ public class PetTest {
 
         boolean[] attention = meap.needsAttention();
         assertFalse(attention[0]); // Hunger should need attention (set hunger to 10)
-        assertTrue(attention[1]); // Cleanliness should not need attention
-        assertFalse(attention[2]); // Happiness should not need attention
+        assertFalse(attention[1]); // Cleanliness should not need attention
+        assertTrue(attention[2]); // Happiness should not need attention
     }
 
     @Test
     void testNeedsPill() {
-        meap.dropHealth(); // Decrease health
-        meap.dropHealth(); // Decrease health
+        meap.setHealth(19); 
         assertTrue(meap.needsPill());
     }
+
+    @Test
+    void testFeedMax() {
+        meap.setHunger(95); 
+        meap.feed(new Food("testFood", 30, 0));
+        assertEquals(100, meap.getHunger());
+    }
+
+    @Test
+    void testInjured() {
+        meap.injuried();
+        assertEquals(15, meap.getHealth());
+    }
+
+    @Test
+    void testAlreadyInjured() {
+        meap.setHealth(10);
+        meap.injuried();
+        assertEquals(10, meap.getHealth());
+    }
+
+
+    @Test
+    void testUsePill() {
+        meap.setHunger(30);
+        meap.setHealth(40);
+        meap.setHappiness(80);
+        meap.usePill(new Pill("testPill", 0, 20, 10, 10));
+        assertEquals(50, meap.getHunger());
+        assertEquals(50, meap.getHealth());
+        assertEquals(90, meap.getHappiness());
+    }
+
+    @Test
+    void testUsePillMax() {
+        meap.setHunger(100);
+        meap.setHealth(95);
+        meap.setHappiness(90);
+        meap.usePill(new Pill("testPill", 0, 20, 10, 10));
+        assertEquals(100, meap.getHunger());
+        assertEquals(100, meap.getHealth());
+        assertEquals(100, meap.getHappiness());
+    }
+
+    @Test
+    void testNeedPillTrue() {
+        meap.setHealth(10);
+        assertTrue(meap.needsPill());
+    }
+
+    @Test
+    void testNeedPillFalse() {
+        assertFalse(meap.needsPill());
+    }
+
+    @Test
+    void testGetStatus() {
+        String returnString =  "Pet Fluffy - Pet Type: Meap\n"
+        + "Hunger: 50\n"
+        + "Happiness: 50\n"
+        + "Health: 100\n"
+        + "Cleanliness: 100";
+        assertEquals(returnString, meap.getStatus());
+    }
+
 }

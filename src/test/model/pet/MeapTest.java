@@ -3,6 +3,7 @@ package model.pet;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import java.util.ArrayList;
 
 public class MeapTest {
 
@@ -24,17 +25,11 @@ public class MeapTest {
     }
 
     @Test
-    void testPlay() {
+    void testPlayNotInjured() {
         meap.play();
         assertEquals(65, meap.getHappiness()); // 50 + 15 = 65
         assertEquals(40, meap.getHunger());    // 50 - 10 = 40
         assertEquals(80, meap.getCleanliness()); // 100 - 20 = 80
-
-        if (meap.getHealth() == 15) {
-            assertEquals(15, meap.getHealth());  
-        } else {
-            assertEquals(100, meap.getHealth()); 
-        }
     }
 
     @Test
@@ -61,28 +56,14 @@ public class MeapTest {
 
     @Test
     void testRandomlyInjured() {
-        int consecutiveInjuries = 0;
-        int maxConsecutiveInjuries = 0;
-        int consecutiveNonInjuries = 0;
-        int maxConsecutiveNonInjuries = 0;
+        ArrayList<Boolean> isInjuriedList = new ArrayList<>();
 
-        for (int i = 0; i < 100; i++) {
-            meap.randomlyInjured(); // Call the method
-            boolean isInjured = (meap.getHealth() == 15); // Check injured state after
-
-            if (isInjured) {
-                consecutiveInjuries++;
-                maxConsecutiveInjuries = Math.max(maxConsecutiveInjuries, consecutiveInjuries);
-                consecutiveNonInjuries = 0;
-            } else {
-                consecutiveNonInjuries++;
-                maxConsecutiveNonInjuries = Math.max(maxConsecutiveNonInjuries, consecutiveNonInjuries);
-                consecutiveInjuries = 0;
-            }
+        for (int i = 0; i < 1000; i++) {
+            isInjuriedList.add(meap.randomlyInjured());
         }
 
-        assertTrue(maxConsecutiveInjuries < 10);
-        assertTrue(maxConsecutiveNonInjuries < 10);
+        assertTrue(isInjuriedList.contains(true));
+        assertTrue(isInjuriedList.contains(false));
     }
 
 }

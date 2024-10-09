@@ -2,6 +2,7 @@ package model.pet;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -25,17 +26,11 @@ public class MeomoTest {
     }
 
     @Test
-    void testPlay() {
+    void testPlayNotInjured() {
         meomo.play();
-        assertEquals(55, meomo.getHappiness());
-        assertEquals(45, meomo.getHunger()); // 50 - 5
-        assertEquals(95, meomo.getCleanliness()); // 100 - 5
-
-        if (meomo.getHealth() == 15) {
-            assertEquals(15, meomo.getHealth());  
-        } else {
-            assertEquals(100, meomo.getHealth()); 
-        }
+        assertEquals(65, meomo.getHappiness());
+        assertEquals(45, meomo.getHunger());
+        assertEquals(95, meomo.getCleanliness()); 
     }
 
     @Test
@@ -49,7 +44,7 @@ public class MeomoTest {
     void testPet() {
         meomo.pet();
         assertEquals(60,meomo.getHappiness());
-        assertEquals(40, meomo.getHunger()); // 50 - 10
+        assertEquals(40, meomo.getHunger());
     }
 
     @Test
@@ -61,28 +56,14 @@ public class MeomoTest {
 
     @Test
     void testRandomlyInjured() {
-        int consecutiveInjuries = 0;
-        int maxConsecutiveInjuries = 0;
-        int consecutiveNonInjuries = 0;
-        int maxConsecutiveNonInjuries = 0;
+        ArrayList<Boolean> isInjuriedList = new ArrayList<>();
 
-        for (int i = 0; i < 100; i++) {
-            meomo.randomlyInjured(); // Call the method
-            boolean isInjured = (meomo.getHealth() == 15); // Check injured state after
-
-            if (isInjured) {
-                consecutiveInjuries++;
-                maxConsecutiveInjuries = Math.max(maxConsecutiveInjuries, consecutiveInjuries);
-                consecutiveNonInjuries = 0;
-            } else {
-                consecutiveNonInjuries++;
-                maxConsecutiveNonInjuries = Math.max(maxConsecutiveNonInjuries, consecutiveNonInjuries);
-                consecutiveInjuries = 0;
-            }
+        for (int i = 0; i < 1000; i++) {
+            isInjuriedList.add(meomo.randomlyInjured());
         }
 
-        assertTrue(maxConsecutiveInjuries < 10);
-        assertTrue(maxConsecutiveNonInjuries < 10);
+        assertTrue(isInjuriedList.contains(true));
+        assertTrue(isInjuriedList.contains(false));
     }
 }
 

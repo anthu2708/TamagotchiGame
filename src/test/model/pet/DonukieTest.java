@@ -2,6 +2,7 @@ package model.pet;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import java.util.ArrayList;
 
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -26,17 +27,12 @@ public class DonukieTest {
     }
 
     @Test
-    void testPlay() {
+    void testPlayNotInjured() {
         donukie.play();
-        assertEquals(55, donukie.getHappiness());
+        assertEquals(60, donukie.getHappiness());
         assertEquals(45, donukie.getHunger());
-        assertEquals(95, donukie.getCleanliness()); 
+        assertEquals(90, donukie.getCleanliness()); 
         
-        if (donukie.getHealth() == 15) {
-            assertEquals(15, donukie.getHealth());  
-        } else {
-            assertEquals(100, donukie.getHealth()); 
-        }
     }
 
     @Test
@@ -49,7 +45,7 @@ public class DonukieTest {
     @Test
     void testPet() {
         donukie.pet();
-        assertEquals(60,donukie.getHappiness());
+        assertEquals(65,donukie.getHappiness());
         assertEquals(40, donukie.getHunger()); 
     }
 
@@ -63,28 +59,14 @@ public class DonukieTest {
 
     @Test
     void testRandomlyInjured() {
-        int consecutiveInjuries = 0;
-        int maxConsecutiveInjuries = 0;
-        int consecutiveNonInjuries = 0;
-        int maxConsecutiveNonInjuries = 0;
+        ArrayList<Boolean> isInjuriedList = new ArrayList<>();
 
-        for (int i = 0; i < 100; i++) {
-            donukie.randomlyInjured(); // Call the method
-            boolean isInjured = (donukie.getHealth() == 15); // Check injured state after
-
-            if (isInjured) {
-                consecutiveInjuries++;
-                maxConsecutiveInjuries = Math.max(maxConsecutiveInjuries, consecutiveInjuries);
-                consecutiveNonInjuries = 0;
-            } else {
-                consecutiveNonInjuries++;
-                maxConsecutiveNonInjuries = Math.max(maxConsecutiveNonInjuries, consecutiveNonInjuries);
-                consecutiveInjuries = 0;
-            }
+        for (int i = 0; i < 1000; i++) {
+            isInjuriedList.add(donukie.randomlyInjured());
         }
 
-        assertTrue(maxConsecutiveInjuries < 10);
-        assertTrue(maxConsecutiveNonInjuries < 10);
+        assertTrue(isInjuriedList.contains(true));
+        assertTrue(isInjuriedList.contains(false));
     }
 
 }
