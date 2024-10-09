@@ -45,7 +45,7 @@ public class Store {
                 .append(" (Hunger Points: ")
                 .append(food.getNutritionValue())
                 .append(", Cost: ")
-                    .append(food.getCost());
+                    .append(food.getCost() + " \n");
         }
 
         sb.append("\n --- Pills --- \n");
