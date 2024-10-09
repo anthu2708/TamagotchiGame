@@ -1,9 +1,5 @@
 package model;
 
-import model.CoinManager;
-import model.Game;
-import model.House;
-import model.Store;
 import model.supplies.Fridge;
 import model.supplies.MedicineBox;
 import org.junit.jupiter.api.BeforeEach;

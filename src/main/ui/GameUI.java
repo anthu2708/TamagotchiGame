@@ -1,7 +1,6 @@
 package ui;
 
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -101,8 +100,6 @@ public class GameUI {
             System.out.println("You have no pets! Please add a pet first.");
             return;
         }
-
-        // Show the list of pets
         System.out.println("\nSelect a pet:");
         for (int i = 0; i < game.getHouse().getPetCount(); i++) {
             System.out.println((i + 1) + ". " + game.getHouse().getPet(i).getName());
