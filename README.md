@@ -14,9 +14,9 @@ The idea of nurturing a virtual pet sparks fond memories of early handheld games
 
 ## User Stories
 
-- As a user, I want to be able to add a new pet to my home and give it a name.
-- As a user, I want to view my pet's status, including hunger, happiness, cleanliness, and health levels.
-- As a user, I want to be able to clean, play with, heal, and feed my pet.
-- As a user, I want to add food to the fridge using coins earned from taking care of the pet and track the quantity of each food item in the fridge.
-- As a user, I want to view all the food available in the fridge and the quantity of each food.
-- As a user, I want to be notified when my pet requires attention or is ill.
+- As a user, I want to be able to add a new pet to my house and give it a name.
+- As a user, I want to view my pets' statuses, including hunger, happiness, cleanliness, and health levels.
+- As a user, I want to be able to choose a pet and clean, play with, heal, and feed it.
+- As a user, I want to be notified when my pet requires attention or is injured.
+- As a user, I want to add food to the fridge and pills to medicine box using coins earned from taking care of the pet and track the quantity of each item.
+- As a user, I want to view all the items available in the fridge and medicine box, and the quantity of each item .
