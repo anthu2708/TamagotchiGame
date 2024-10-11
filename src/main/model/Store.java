@@ -45,7 +45,7 @@ public class Store {
                 .append(" (Hunger Points: ")
                 .append(food.getNutritionValue())
                 .append(", Cost: ")
-                    .append(food.getCost() + " \n");
+                    .append(food.getCost() + ") \n");
         }
 
         sb.append("\n --- Pills --- \n");
@@ -56,7 +56,7 @@ public class Store {
                 .append(" (Content: ")
                 .append(pill.getContent())
                 .append(", Cost: ")
-                    .append(pill.getCost() + " \n");
+                    .append(pill.getCost() + ") \n");
         }
         return sb.toString();
     }
