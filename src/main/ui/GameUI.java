@@ -1,6 +1,7 @@
 package ui;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -54,11 +55,12 @@ public class GameUI {
         int choice = -1;
         while (choice < 1 || choice > 5) {
             try {
+                System.out.println("Choose your action: ");
                 choice = scanner.nextInt();
                 scanner.nextLine(); // Consume the newline
-            } catch (Exception e) {
+            } catch (InputMismatchException e) {
                 System.out.println("Invalid input. Please enter a number between 1 and 5.");
-                scanner.nextLine(); 
+                scanner.nextLine();
             }
         }
         return choice;
@@ -68,13 +70,14 @@ public class GameUI {
     private void showMainMenu() {
         System.out.println("\n--- Main Menu ---");
         System.out.println("1. Go to Pet");
-        System.out.println("2. View Status");
+        System.out.println("2. View Pet");
         System.out.println("3. Add more Pet");
         System.out.println("4. Delete Pet");
         System.out.println("5. Exit Game");
     }
 
  
+    // REQUIRES: choice can only be 1, 2, 3 or 4
     // EFFECTS: Handles the user's choice from the main menu.
     private void handleUserChoice(int choice) {
         switch (choice) {
@@ -105,26 +108,37 @@ public class GameUI {
             System.out.println((i + 1) + ". " + game.getHouse().getPet(i).getName());
         }
         
-        int petIndex = getUserChoiceForPet();
-        if (petIndex >= 0) {
-            managePet(petGames.get(petIndex));
-            return;
+        while (true) {
+            try {
+                int petIndex = getUserChoiceForPet();
+                if (petIndex >= 0) {
+                    managePet(petGames.get(petIndex));
+                    return;
+                }
+                break;
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid choice.");
+                scanner.nextLine();
+            }
         }
     }
 
     // EFFECTS: Prompts the user to select a pet by its index.
     private int getUserChoiceForPet() {
-        while (true) { // Keep prompting until a valid input is given
+        while (true) {
             System.out.print("Enter the pet number: ");
-            int choice = scanner.nextInt() - 1; // Adjusting index for zero-based array
-    
-            if (choice >= 0 && choice < game.getHouse().getPetCount()) {
-                scanner.nextLine(); // Consume the newline
-                return choice; // Return valid choice
-            } else {
-                System.out.println("Invalid input. Please enter a valid pet number.");
-                scanner.nextLine(); // Clear the invalid input
+            try {
+                int choice = scanner.nextInt() - 1;
+                if (choice >= 0 && choice < game.getHouse().getPetCount()) {
+                    return choice; 
+                } else {
+                    System.out.println("Invalid index! Please enter a valid index.");
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid index! Please enter a number.");
+                scanner.nextLine();
             }
+            
         }
     }
 
@@ -140,30 +154,38 @@ public class GameUI {
             System.out.println("You have no pets!");
             return;
         }
-        
-        // Display all pets with their indices
-        System.out.println("\nPet Statuses:");
         List<Pet> pets = game.getHouse().getPets();
+        printPetList(pets);
+    
+        while (true) {
+            System.out.print("Enter the index of the pet to view its status: ");
+            try {
+                int index = scanner.nextInt();
+                scanner.nextLine(); 
+                if (index <= 0 || index > pets.size()) {
+                    System.out.println("Invalid choice! Please enter a valid index.");
+                } else {
+                    Pet selectedPet = pets.get(index - 1);
+                    System.out.println(selectedPet.getName() + ": " + selectedPet.getStatus());
+                    break;
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid choice! Please enter a number.");
+                scanner.nextLine();
+            }
+        }
+    }
+
+    // EFFECTS: print the given list of pets
+    private void printPetList(List<Pet> pets) {
+        System.out.println("\nPet Statuses:");
         for (int i = 1; i <= pets.size(); i++) {
             System.out.println(i + ": " + pets.get(i - 1).getName());
-        }
-    
-        // Prompt user to select a pet by index
-        System.out.print("Enter the index of the pet to view its status: ");
-        int index = scanner.nextInt();
-    
-        // Validate the index
-        if (index <= 0 || index > pets.size()) {
-            System.out.println("Invalid index! Please enter a valid index.");
-        } else {
-            // Get the selected pet and display its status
-            Pet selectedPet = pets.get(index - 1);
-            System.out.println(selectedPet.getName() + ": " + selectedPet.getStatus());
         }
     }
 
     // MODIFIES: this
-    // EFFECTS: Add a new pet
+    // EFFECTS: Hatch a Pet, named it and put it to house
     private void addPet() {
         System.out.println("Hatching a new egg! What will your pet's name be?");
         String petName = scanner.nextLine();
@@ -175,24 +197,47 @@ public class GameUI {
     }
 
     // MODIFIES: this
-    // EFFECTS: Delete a new pet
+    // EFFECTS: Delete a pet Loop;
+    //          If there is no Pet, print out No Pet message
+    //          If there is Pet, get input index and delete the Pet
+    //          If the input is invalid, print out invalid choice message
     private void deletePet() {
         if (game.getHouse().getPetCount() == 0) {
             System.out.println("You have no pets to delete!");
             return;
         }
 
-        // Show the list of pets
         System.out.println("Select a pet to delete:");
         for (int i = 0; i < game.getHouse().getPetCount(); i++) {
             System.out.println((i + 1) + ". " + game.getHouse().getPet(i).getName());
         }
+
+        while (true) {
+            try {
+                int petIndex = getUserChoiceForPet();
+                deletePetWithIndex(petIndex, game);
+                break;
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid Choice. Please try again.");
+                scanner.nextLine();
+            }
+
+        }
         
-        int petIndex = getUserChoiceForPet();
-        if (petIndex >= 0) {
-            game.getHouse().removePet(petIndex);
+    }
+
+    // MODIFIES: this
+    // EFFECTS: Delete a pet with given index from the house and their pet game
+    private void deletePetWithIndex(int petIndex, Game game) {
+        House house = game.getHouse();
+        int petNums = house.getPetCount();
+        if (petIndex >= 0 && petIndex < petNums) {
+            house.removePet(petIndex);
             petGames.remove(petIndex);
             System.out.println("Pet removed successfully.");
+        } else {
+            System.out.println("Invalid Choice. Please try again.");
         }
+        
     }
 }

@@ -1,5 +1,6 @@
 package ui;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import model.CoinManager;
@@ -78,11 +79,12 @@ public class PetUI {
         int choice = -1;
         while (choice < 1 || choice > 9) {
             try {
+                System.out.println("Choose your action: ");
                 choice = scanner.nextInt();
-                scanner.nextLine(); // Consume the newline
-            } catch (Exception e) {
+                scanner.nextLine(); 
+            } catch (InputMismatchException e) {
                 System.out.println("Invalid input. Please enter a number between 1 and 9.");
-                scanner.nextLine(); // Clear the invalid input
+                scanner.nextLine();
             }
         }
         return choice;
@@ -132,89 +134,130 @@ public class PetUI {
 
 
     // MODIFIES: this
-    // EFFECTS: Feed the pet
+    // EFFECTS: Feed the pet Loop
+    //          if the index is valid, perform the action
+    //          otherwise print invalid input message
     private void feedPet() {
         if (fridge.isEmpty()) {
             System.out.println("There is no food in the fridge. Please visit the store to purchase some.");
         } else {
             viewFridge();
             System.out.println("Enter the index of the food to feed:");
-            int foodChoice = scanner.nextInt();
-            scanner.nextLine();
-            Food food = fridge.getFoodByIndex(foodChoice);
-            if (food != null) {
-                pet.feed(food);
-                fridge.removeFood(food);
-                System.out.println("You feed " + pet.getName() + " " + food.getName());
-                this.coinManager.add(5);
-                System.out.println("You earned 5 coins! Total coins: " + this.coinManager.getValue());
-
-            } else {
-                System.out.println("Invalid choice.");
+            try {
+                int foodChoice = scanner.nextInt();
+                scanner.nextLine(); 
+                handleFeedPet(foodChoice);
+            } catch (InputMismatchException  e) {
+                System.out.println("Invalid choice. ");
             }
         }               
     }
 
+    // MODIFIES: this
+    // EFFECTS:get Food from the fridge by the given index
+    //         if successful (there's food w/ given index), feed the pet, remove food from fridge and print out messages
+    //         if not, print invalid message
+    public void handleFeedPet(int foodChoice) {
+        Food food = fridge.getFoodByIndex(foodChoice);
+        if (food != null) {
+            pet.feed(food);
+            fridge.removeFood(food);
+            System.out.println("You feed " + pet.getName() + " " + food.getName());
+            this.coinManager.add(5);
+            System.out.println("You earned 5 coins! Total coins: " + this.coinManager.getValue());
+        } else {
+            System.out.println("Invalid choice.");
+        }
+    } 
 
 
     // MODIFIES: this
-    // Play with the pet
-    private void playWithPet() {
+    // EFFECTS: handle the whole loop for play with pet;
+    //          if input is valid, perform play or pet action
+    //          if input is invalid, print error message
+    public void playWithPet() {
         if (pet.needsPill()) {
             System.out.println(pet.getName() + " is sick and needs a pill. Heal your pet before playing.");
         } else {
             System.out.println("1. Play \n2. Pet ");
             System.out.println("Choose your next action: ");
-            int playChoice = scanner.nextInt();
-            scanner.nextLine();
-            if (playChoice == 1) {
-                pet.play();
-                coinManager.add(7);
-                
-                System.out.println("You earned 7 coins from playing with " + pet.getName() + "!");
-                System.out.println("Total coins: " + coinManager.getValue());
-            } else if (playChoice == 2) {
-                pet.pet();
-                coinManager.add(5);
-                System.out.println("You earned 5 coins from playing with " + pet.getName() + "!");
-                System.out.println("Total coins: " + coinManager.getValue());
-            } else {
+            try {
+                int playChoice = scanner.nextInt();
+                handlePlayChoice(playChoice);
+            } catch (InputMismatchException e) {
                 System.out.println("Invalid choice.");
+                scanner.nextLine();
             }
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: Play with the Pet: if the choice is 1, play with the pet
+    //                             if the choice is 2, pet the pet
+    //                             otherwise print invalid message
+    public void handlePlayChoice(int playChoice) {
+        if (playChoice == 1) {
+            pet.play();
+            coinManager.add(7);
+            
+            System.out.println("You earned 7 coins from playing with " + pet.getName() + "!");
+            System.out.println("Total coins: " + coinManager.getValue());
+        } else if (playChoice == 2) {
+            pet.pet();
+            coinManager.add(5);
+            System.out.println("You earned 5 coins from playing with " + pet.getName() + "!");
+            System.out.println("Total coins: " + coinManager.getValue());
+        } else {
+            System.out.println("Invalid choice.");
         }
     }
 
 
     // MODIFIES: this
-    // EFFECTS: Heal the pet
+    // EFFECTS: Heal the pet Loop; go to the medicine box and give medicine choice
+    //          if input is valid, heal the pet using pill
+    //          otherwise, print invalid input message
     private void healPet() {
         if (pet.needsPill()) {
             if (medicineBox.isEmpty()) {
                 System.out.println("There is no pills. Please visit store to purchase some.");
             } else {
-                System.out.println("Enter the index of the pill to use:");
                 viewMedicineBox();
-
-                int pillChoice = scanner.nextInt();
-                Pill selectedPill = medicineBox.getPillByIndex(pillChoice);
-
-                if (selectedPill != null && medicineBox.usePill(selectedPill)) {
-                    pet.usePill(selectedPill);
-                    coinManager.add(10);
-                    System.out.println("You earned 10 coins! Total coins: " + coinManager.getValue());
-                } else {
+                System.out.println("Enter the index of the pill to use:");
+                try {
+                    int pillChoice = scanner.nextInt();
+                    handlePillChoice(pillChoice);
+                } catch (InputMismatchException e) {
                     System.out.println("Invalid pill choice.");
+                    scanner.nextLine();
                 }
+                
             }
-            
+           
         } else {
             System.out.println("Your pet is not injured.");
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS:get Pill from the MedicineBox by the given index
+    //         if successful (there's pill w/ given index), use on pet, remove pill from box and print out messages
+    //         if not, print invalid message
+    public void handlePillChoice(int pillChoice) {
+        Pill selectedPill = medicineBox.getPillByIndex(pillChoice);
+
+        if (selectedPill != null && medicineBox.usePill(selectedPill)) {
+            pet.usePill(selectedPill);
+            coinManager.add(10);
+            System.out.println("You earned 10 coins! Total coins: " + coinManager.getValue());
+        } else {
+            System.out.println("Invalid pill choice.");
         }
     }
     
 
     // MODIFIES: this
-    // EFFECTS: Clean the pet
+    // EFFECTS: Clean the pet if cleanliness drop above 40
     private void cleanPet() {
         if (pet.getCleanliness() < 40) {
             pet.clean();
@@ -227,14 +270,28 @@ public class PetUI {
     }
 
     // MODIFIES: this
-    // EFFECTS: Visit the store to purchase food
+    // EFFECTS: Visit the store to purchase Loop: display all items in store;
+    //          take in input and purchase the item
+    //          if input is valid (a number within the list), perform the action
+    //          if not, print invalid choid message
     private void visitStore() {
         System.out.println("\n=== Store === \n" + store.displayAvailItems());
-
         System.out.println("Enter the number of the item you want to purchase: ");
-        int itemChoice = scanner.nextInt();
-        scanner.nextLine(); 
+        try {
+            int itemChoice = scanner.nextInt();
+            purchaseItem(itemChoice);
+        } catch (InputMismatchException e) {
+            System.out.println("Invalid choice.");
+            scanner.nextLine();
+        }
+       
+    }
 
+    // MODIFIES: this
+    // EFFECTS:get item from the store by the given index
+    //         if successful (there's item w/ given index), buy it and store in the right place, subtract coin
+    //         if not, print invalid message
+    private void purchaseItem(int itemChoice) {
         if (itemChoice > 0 && itemChoice <= store.getNumItems()) {
             if (itemChoice <= store.getFood().size()) { // Check for Food
                 Food purchasedFood = store.purchaseFood(itemChoice, fridge, coinManager);
