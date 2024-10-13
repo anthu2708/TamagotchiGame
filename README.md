@@ -20,3 +20,5 @@ The idea of nurturing a virtual pet sparks fond memories of early handheld games
 - As a user, I want to be notified when my pet requires attention or is injured.
 - As a user, I want to add food to the fridge and pills to medicine box using coins earned from taking care of the pet and track the quantity of each item.
 - As a user, I want to view all the items available in the fridge and medicine box, and the quantity of each item .
+- As a user, when I select quit option from application menu I want to be reminded to save my game progress to file, which including pets, their state and other items in inventory. I want to have the option to do so or not.
+- As a user, when I first start the application, I want to be given the option to load my game progress from file.
