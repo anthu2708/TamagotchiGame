@@ -42,24 +42,30 @@ public class GameUI {
             int choice = getUserChoice();
             handleUserChoice(choice);
 
-            if (choice == 5) {
-                isPlaying = false;
+            if (choice == 6) {
+                isPlaying = quitGame();
             }
         }
         System.out.println("Exiting game...");
         scanner.close();
     }
 
+    // EFFECTS: ask if want to save game progress and take action;
+    //          quitting game
+    private boolean quitGame() {
+        return false;
+    }
+
     // EFFECTS: Prompts the user to enter their menu choice and validates the input.
     private int getUserChoice() {
         int choice = -1;
-        while (choice < 1 || choice > 5) {
+        while (choice < 1 || choice > 6) {
             try {
                 System.out.println("Choose your action: ");
                 choice = scanner.nextInt();
                 scanner.nextLine(); // Consume the newline
             } catch (InputMismatchException e) {
-                System.out.println("Invalid input. Please enter a number between 1 and 5.");
+                System.out.println("Invalid input. Please enter a number between 1 and 6.");
                 scanner.nextLine();
             }
         }
@@ -73,7 +79,8 @@ public class GameUI {
         System.out.println("2. View Pet");
         System.out.println("3. Add more Pet");
         System.out.println("4. Delete Pet");
-        System.out.println("5. Exit Game");
+        System.out.println("5. Load Game");
+        System.out.println("6. Exit Game");
     }
 
  
@@ -93,7 +100,16 @@ public class GameUI {
             case 4:
                 deletePet(); // Delete an existing pet
                 break;
+            case 5:
+                loadGame();
+                break;
         }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads workroom from file
+    private void loadGame() {
+        // stub
     }
 
     // EFFECTS: Navigates to a specific pet for management. If no pets exist, 
