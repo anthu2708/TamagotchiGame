@@ -1,5 +1,7 @@
 package ui;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
@@ -13,6 +15,8 @@ import model.supplies.Fridge;
 import model.supplies.MedicineBox;
 import model.House;
 import model.Store; 
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
 /**
  * GameUI - Represents the user interface for the pet management game.
@@ -21,15 +25,21 @@ import model.Store;
  */
 
 public class GameUI { 
+    private static final String JSON_STORE = "./data/workroom.json";
     private List<PetUI> petGames;
     private Game game;
     private Scanner scanner;
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
 
     // Constructor
     public GameUI() {
         this.game = new Game(new House(), new Fridge(), new MedicineBox(), new CoinManager(100), new Store());
         this.petGames = new ArrayList<>();
         this.scanner = new Scanner(System.in);
+
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
     }
 
     // EFFECTS: Initiates the main game loop, displaying the main menu and 
@@ -53,7 +63,25 @@ public class GameUI {
     // EFFECTS: ask if want to save game progress and take action;
     //          quitting game
     private boolean quitGame() {
+        System.out.println("Do you want to save your progress before quitting? (y/n)");
+        String input = scanner.nextLine();
+
+        if (input.equalsIgnoreCase("y")) {
+            saveGame();
+        }
         return false;
+    }
+
+    // EFFECTS: saves the game progress to file
+    private void saveGame() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(game);
+            jsonWriter.close();
+            System.out.println("Game saved successfully!");
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to save the game.");
+        }
     }
 
     // EFFECTS: Prompts the user to enter their menu choice and validates the input.
@@ -109,7 +137,21 @@ public class GameUI {
     // MODIFIES: this
     // EFFECTS: loads workroom from file
     private void loadGame() {
-        // stub
+        try {
+            List<Pet> petList;
+            List<PetUI> petsUI = new ArrayList<>();
+            game = jsonReader.readGame();
+            petList = jsonReader.readPet();
+
+            for (Pet p: petList) {
+                PetUI petUI = new PetUI(p, game, scanner);
+                petsUI.add(petUI);
+            }
+            petGames = petsUI;
+            System.out.println("Loaded game from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
+        }
     }
 
     // EFFECTS: Navigates to a specific pet for management. If no pets exist, 
