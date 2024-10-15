@@ -72,6 +72,20 @@ public class MedicineBox {
         return null;
     }
 
+    // REQUIRES: the fridge is not empty
+    // EFFECTS: returns a specific food item's quantity by index
+    //          return -1 if fail (index not in the list)
+    public int getQuantityByIndex(int index) {
+        int i = 1;
+        for (Map.Entry<Pill, Integer> entry : pills.entrySet()) {
+            if (i == index) {
+                return entry.getValue();
+            }
+            i++;
+        }
+        return -1;
+    }
+
     // getter
     public Map<Pill, Integer> getPill() {
         return pills;

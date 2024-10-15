@@ -71,6 +71,20 @@ public class Fridge {
         return null;
     }
 
+    // REQUIRES: the fridge is not empty
+    // EFFECTS: returns a specific food item's quantity by index
+    //          return -1 if fail (index not in the list)
+    public int getQuantityByIndex(int index) {
+        int i = 1;
+        for (Map.Entry<Food, Integer> entry : foodItems.entrySet()) {
+            if (i == index) {
+                return entry.getValue();
+            }
+            i++;
+        }
+        return -1;
+    }
+
     // getters
     public Map<Food, Integer> getFood() {
         return foodItems;

@@ -79,6 +79,16 @@ class FridgeTest {
     }
 
     @Test
+    void testGetQuantityByIndex() {
+        fridge.addFood(apple);
+        fridge.addFood(apple);
+        fridge.addFood(banana);
+        assertEquals(2, fridge.getQuantityByIndex(1));
+        assertEquals(1, fridge.getQuantityByIndex(2));
+        assertEquals(-1, fridge.getQuantityByIndex(3));
+    }
+
+    @Test
     void testIsEmpty() {
         assertTrue(fridge.isEmpty());
         fridge.addFood(apple);

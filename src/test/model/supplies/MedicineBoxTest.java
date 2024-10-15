@@ -80,8 +80,10 @@ class MedicineBoxTest {
         medicineBox.addPill(painRelief);
 
         // Act & Assert
-        assertEquals("1. Vitamin C (Quantity: 1, Content: Nutrition Value - 5, Health Value - 0, Happiness Value - 0)\n" +
-                     "2. Pain Relief (Quantity: 1, Content: Nutrition Value - 2, Health Value - 5, Happiness Value - 10)\n",
+        assertEquals("1. Vitamin C (Quantity: 1, Content: Nutrition Value - 5, "
+                + "Health Value - 0, Happiness Value - 0)\n" 
+                + "2. Pain Relief (Quantity: 1, Content: Nutrition Value - 2, "
+                +  "Health Value - 5, Happiness Value - 10)\n",
                      medicineBox.viewPills());
     }
 
@@ -95,5 +97,15 @@ class MedicineBoxTest {
         assertEquals(vitaminC, medicineBox.getPillByIndex(1));
         assertEquals(painRelief, medicineBox.getPillByIndex(2));
         assertEquals(null, medicineBox.getPillByIndex(3));
+    }
+
+    @Test
+    void testGetQuantityByIndex() {
+        medicineBox.addPill(vitaminC);
+        medicineBox.addPill(painRelief);
+        medicineBox.addPill(painRelief);
+        assertEquals(1, medicineBox.getQuantityByIndex(1));
+        assertEquals(2, medicineBox.getQuantityByIndex(2));
+        assertEquals(-1, medicineBox.getQuantityByIndex(3));
     }
 }
