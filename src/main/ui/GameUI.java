@@ -141,7 +141,7 @@ public class GameUI {
             List<Pet> petList;
             List<PetUI> petsUI = new ArrayList<>();
             game = jsonReader.readGame();
-            petList = jsonReader.readPet();
+            petList = game.getHouse().getPets();
 
             for (Pet p: petList) {
                 PetUI petUI = new PetUI(p, game, scanner);
