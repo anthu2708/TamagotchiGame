@@ -128,26 +128,39 @@ class JsonWriterTest extends JsonTest {
     }
 
     void checkGeneralGame(Game loadedGame) {
-        // Check pets in House
         House readHouse = loadedGame.getHouse();
-        assertEquals(3, readHouse.getPets().size());
-        checkPet("Meap", 80, 90, 75, 100, "Meap", false, readHouse.getPet(0));
-        checkPet("Meomo", 60, 70, 50, 15, "Meomo", true, readHouse.getPet(1));
-        checkPet("Donukie", 50, 40, 30, 60, "Donukie", false, readHouse.getPet(2));
+        testHouseReaderGeneralGame(readHouse);
 
-        // Check food in Fridge
         Fridge readFridge = loadedGame.getFridge();
-        assertEquals(2, readFridge.getFood().size());
-        checkFood("Steak", 40, 20, readFridge.getFoodByIndex(1));
-        checkFood("Apple", 5, 2, readFridge.getFoodByIndex(2));
+        testFridgeReaderGeneralGame(readFridge);
 
-        // Check Pill in MedicineBox
         MedicineBox readMedicineBox = loadedGame.getMedicineBox();
-        assertEquals(2, readMedicineBox.getPill().size());
-        checkPill("Vitamin", 10, 5, 15, 10, readMedicineBox.getPillByIndex(1));
-        checkPill("Aspirin", 15, 0, 10, 5, readMedicineBox.getPillByIndex(2));
-
+        testMBReaderGeneralGame(readMedicineBox);
+        
         // Check CoinManager
         assertEquals(100, loadedGame.getCoinManager().getValue());
+    }
+
+    void testHouseReaderGeneralGame(House house) {
+        assertEquals(3, house.getPetCount());
+        checkPet("Meap", 80, 90, 75, 100, "Meap", false, house.getPet(0));
+        checkPet("Meomo", 60, 70, 50, 15, "Meomo", true, house.getPet(1));
+        checkPet("Donukie", 50, 40, 30, 60, "Donukie", false, house.getPet(2));
+    }
+
+    void testFridgeReaderGeneralGame(Fridge fridge) {
+        assertEquals(2, fridge.getFood().size());
+        checkFood("Steak", 40, 20, fridge.getFoodByIndex(1));
+        checkFood("Apple", 5, 2, fridge.getFoodByIndex(2));
+        assertEquals(1, fridge.getQuantityByIndex(1));
+        assertEquals(1, fridge.getQuantityByIndex(2));
+    }
+
+    void testMBReaderGeneralGame(MedicineBox medicineBox) {
+        assertEquals(2, medicineBox.getPill().size());
+        checkPill("Painkiller", 50, 20, 10, 5, medicineBox.getPillByIndex(0));
+        checkPill("Vitamin", 30, 15, 5, 10, medicineBox.getPillByIndex(1));
+        assertEquals(1, medicineBox.getQuantityByIndex(1));
+        assertEquals(1, medicineBox.getQuantityByIndex(2));
     }
 }

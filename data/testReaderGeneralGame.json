@@ -34,11 +34,13 @@
         "foodItems": {
             "Steak": {
                 "nutritionValue": 40,
-                "cost": 20
+                "cost": 20,
+                "quantity": 1
             },
             "Apple": {
                 "nutritionValue": 5,
-                "cost": 2
+                "cost": 2,
+                "quantity": 1
             }
         }
     },
@@ -49,14 +51,16 @@
                 "cost": 50,
                 "nutritionValue": 20,
                 "healthValue": 10,
-                "happinessValue": 5
+                "happinessValue": 5,
+                "quantity": 1
             },
             {
                 "name": "Vitamin",
                 "cost": 30,
                 "nutritionValue": 15,
                 "healthValue": 5,
-                "happinessValue": 10
+                "happinessValue": 10,
+                "quantity": 1
             }
         ]
     },
