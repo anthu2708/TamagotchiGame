@@ -1,0 +1,67 @@
+{
+    "house": {
+        "pets": [
+            {
+                "name": "Meap",
+                "hunger": 80,
+                "happiness": 90,
+                "cleanliness": 75,
+                "health": 100,
+                "type": "Meap",
+                "isInjured": false
+            },
+            {
+                "name": "Meomo",
+                "hunger": 60,
+                "happiness": 70,
+                "cleanliness": 50,
+                "health": 15,
+                "type": "Meomo",
+                "isInjured": true
+            },
+            {
+                "name": "Donukie",
+                "hunger": 50,
+                "happiness": 40,
+                "cleanliness": 30,
+                "health": 60,
+                "type": "Donukie",
+                "isInjured": false
+            }
+        ]
+    },
+    "fridge": {
+        "foodItems": {
+            "Steak": {
+                "nutritionValue": 40,
+                "cost": 20
+            },
+            "Apple": {
+                "nutritionValue": 5,
+                "cost": 2
+            }
+        }
+    },
+    "medicineBox": {
+        "pills": [
+            {
+                "name": "Painkiller",
+                "cost": 50,
+                "nutritionValue": 20,
+                "healthValue": 10,
+                "happinessValue": 5
+            },
+            {
+                "name": "Vitamin",
+                "cost": 30,
+                "nutritionValue": 15,
+                "healthValue": 5,
+                "happinessValue": 10
+            }
+        ]
+    },
+    "coinManager": {
+        "coins": 100
+    },
+    "store": {}
+}

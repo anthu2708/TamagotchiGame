@@ -1,0 +1,15 @@
+{
+    "house": {
+        "pets": []
+    },
+    "fridge": {
+        "foodItems": {}
+    },
+    "medicineBox": {
+        "pills": []
+    },
+    "coinManager": {
+        "coins": 0
+    },
+    "store": {}
+}
