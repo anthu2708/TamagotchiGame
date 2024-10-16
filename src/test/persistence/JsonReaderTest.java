@@ -32,7 +32,7 @@ public class JsonReaderTest extends JsonTest {
             assertEquals(0, game.getHouse().getPetCount());
             assertEquals(0, game.getFridge().getFood().size());
             assertEquals(0, game.getMedicineBox().getPill().size());
-            assertEquals(0, game.getCoinManager());
+            assertEquals(0, game.getCoinManager().getValue());
         } catch (IOException e) {
             fail("Couldn't read from file");
         }
@@ -74,8 +74,8 @@ public class JsonReaderTest extends JsonTest {
 
     void testMBReaderGeneralGame(MedicineBox medicineBox) {
         assertEquals(2, medicineBox.getPill().size());
-        checkPill("Painkiller", 50, 20, 10, 5, medicineBox.getPillByIndex(0));
-        checkPill("Vitamin", 30, 15, 5, 10, medicineBox.getPillByIndex(1));
+        checkPill("Painkiller", 50, 20, 10, 5, medicineBox.getPillByIndex(1));
+        checkPill("Vitamin", 30, 15, 5, 10, medicineBox.getPillByIndex(2));
         assertEquals(1, medicineBox.getQuantityByIndex(1));
         assertEquals(1, medicineBox.getQuantityByIndex(2));
     }

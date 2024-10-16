@@ -37,7 +37,12 @@ class JsonWriterTest extends JsonTest {
         try {
             // Create a new Game with an empty House, empty Fridge, empty Medicine Box, 100
             // coins and a store
-            Game game = new Game(new House(), new Fridge(), new MedicineBox(), new CoinManager(100), new Store());
+            House house = new House();  
+            Fridge fridge = new Fridge();
+            MedicineBox medicineBox = new MedicineBox();
+            CoinManager coinManager = new CoinManager(100);
+            Store store = new Store();
+            Game game = new Game(house, fridge, medicineBox, coinManager, store);            
             JsonWriter writer = new JsonWriter("./data/testEmptyGame.json");
             writer.open();
             writer.write(game);
