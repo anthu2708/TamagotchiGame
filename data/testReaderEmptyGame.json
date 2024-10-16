@@ -3,7 +3,7 @@
         "pets": []
     },
     "fridge": {
-        "foodItems": {}
+        "foodItems": []
     },
     "medicineBox": {
         "pills": []
