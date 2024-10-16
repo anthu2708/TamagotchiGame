@@ -3,7 +3,10 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.JSONObject;
+
 import model.pet.Pet;
+import persistence.Writable;
 
 /**
  * The House class represents a collection of pets within a household.
@@ -11,7 +14,7 @@ import model.pet.Pet;
  * the total number of pets in the house.
  */
 
-public class House {
+public class House implements Writable {
     private List<Pet> pets;
 
     // EFFECTS: Constructs a House instance with an empty list of pets.
@@ -51,5 +54,11 @@ public class House {
     // EFFECTS: Returns the number of pets
     public int getPetCount() {
         return pets.size();
+    }
+
+    @Override
+    // EFFECTS: return object as a JSON Object
+    public JSONObject toJson() {
+        return null;
     }
 }

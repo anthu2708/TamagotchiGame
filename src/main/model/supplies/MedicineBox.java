@@ -2,6 +2,8 @@ package model.supplies;
 
 import java.util.*;
 
+import org.json.JSONObject;
+
 /**
  * Represents a MedicineBox that stores a collection of pills and their quantities.
  * Provides functionality to add, use, and view pills in the box.
@@ -89,6 +91,11 @@ public class MedicineBox {
     // getter
     public Map<Pill, Integer> getPill() {
         return pills;
+    }
+
+    // EFFECTS: return object as a JSON Object
+    public JSONObject toJson() {
+        return null;
     }
 }
 

@@ -1,5 +1,6 @@
 package model.supplies;
 
+import org.json.JSONObject;
 
 /**
  * Represents a Pill with attributes such as name, cost, nutrition value, health value, and happiness value.
@@ -46,5 +47,10 @@ public class Pill {
 
     public int getHappiness() {
         return happinessValue;
+    }
+
+    // EFFECTS: return object as a JSON Object
+    public JSONObject toJson() {
+        return null;
     }
 }

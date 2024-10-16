@@ -1,8 +1,11 @@
 package model;
 
 
+import org.json.JSONObject;
+
 import model.supplies.Fridge;
 import model.supplies.MedicineBox;
+import persistence.Writable;
 
 /**
  * The Game class represents the main game environment containing various components
@@ -10,7 +13,7 @@ import model.supplies.MedicineBox;
  * It manages the interactions between these components.
  */
 
-public class Game {
+public class Game implements Writable {
     private House house;
     private Fridge fridge;
     private MedicineBox medicineBox;
@@ -53,5 +56,11 @@ public class Game {
 
     public Store getStore() {
         return this.store;
+    }
+
+    @Override
+    // EFFECTS: return object as a JSON Object
+    public JSONObject toJson() {
+        return null;
     }
 }

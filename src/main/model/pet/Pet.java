@@ -1,11 +1,14 @@
 
 package model.pet;
 
+import org.json.JSONObject;
+
 import model.supplies.Food;
 import model.supplies.Pill;
+import persistence.Writable;
 
 // Represents a Pet that has a name, hunger, happiness, health, and cleanliness levels, along with an alive state.
-public abstract class Pet {
+public abstract class Pet implements Writable {
     protected String name;           // Pet's name
     protected int hunger;           // Hunger level (0 = full, 100 = starving)
     protected int happiness;        // Happiness level (0 = sad, 100 = very happy)
@@ -141,6 +144,7 @@ public abstract class Pet {
         return type;
     }
 
+
     // Setters
     public void setCleanliness(int cleanliness) {
         this.cleanliness = cleanliness;
@@ -156,5 +160,11 @@ public abstract class Pet {
 
     public void setHealth(int health) {
         this.health = health;
+    }
+
+    @Override
+    // EFFECTS: return object as a JSON Object
+    public JSONObject toJson() {
+        return null;
     }
 }

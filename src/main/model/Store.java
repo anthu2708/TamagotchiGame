@@ -2,17 +2,20 @@ package model;
 
 import java.util.*;
 
+import org.json.JSONObject;
+
 import model.supplies.Food;
 import model.supplies.Fridge;
 import model.supplies.MedicineBox;
 import model.supplies.Pill;
+import persistence.Writable;
 
 /**
  * The Store class represents a shop where various food items and pills are available for purchase.
  * It provides methods to display available items, purchase food and pills, and manage inventory.
  */
 
-public class Store {
+public class Store implements Writable {
     private List<Food> availableFood;
     private List<Pill> availablePills;
 
@@ -101,5 +104,11 @@ public class Store {
     // EFFECTS: Returns the total number of available items (food and pills) in the store.
     public int getNumItems() {
         return availableFood.size() + availablePills.size();
+    }
+
+    @Override
+    // EFFECTS: return object as a JSON Object
+    public JSONObject toJson() {
+        return null;
     }
 }

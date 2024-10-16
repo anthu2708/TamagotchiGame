@@ -1,5 +1,7 @@
 package model.supplies;
 
+import org.json.JSONObject;
+
 /**
  * Represents a food item with a name, nutrition value, and cost.
  */
@@ -27,6 +29,11 @@ public class Food {
 
     public int getCost() {
         return cost;
+    }
+
+    // EFFECTS: return object as a JSON Object
+    public JSONObject toJson() {
+        return null;
     }
 
 }

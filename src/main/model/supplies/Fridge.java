@@ -2,6 +2,8 @@ package model.supplies;
 
 import java.util.*;
 
+import org.json.JSONObject;
+
 /**
  * Represents a fridge that stores various food items.
  * Each food item can have multiple quantities stored.
@@ -88,5 +90,10 @@ public class Fridge {
     // getters
     public Map<Food, Integer> getFood() {
         return foodItems;
+    }
+
+    // EFFECTS: return object as a JSON Object
+    public JSONObject toJson() {
+        return null;
     }
 }
