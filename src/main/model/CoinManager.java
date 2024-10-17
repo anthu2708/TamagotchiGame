@@ -39,6 +39,6 @@ public class CoinManager implements Writable {
     @Override
     // EFFECTS: return object as a JSON Object
     public JSONObject toJson() {
-        return null;
+        return new JSONObject().put("coins", value);
     }
 }

@@ -61,6 +61,11 @@ public class Game implements Writable {
     @Override
     // EFFECTS: return object as a JSON Object
     public JSONObject toJson() {
-        return null;
+        JSONObject gameJson = new JSONObject();
+        gameJson.put("house", house.toJson());
+        gameJson.put("fridge", fridge.toJson());
+        gameJson.put("medicineBox", medicineBox.toJson());
+        gameJson.put("coinManager", coinManager.toJson());
+        return gameJson;
     }
 }

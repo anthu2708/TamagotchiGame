@@ -135,11 +135,9 @@ public class JsonReader {
             case "Meomo":
                 pet = new Meomo(jsonPet.getString("name"));
                 break;
-            case "Donukie":
+            default:
                 pet = new Donukie(jsonPet.getString("name"));
                 break;
-            default:
-                throw new IllegalArgumentException("Unknown pet type: " + type);
         }
 
         pet.setHunger(jsonPet.getInt("hunger"));

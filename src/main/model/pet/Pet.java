@@ -1,6 +1,7 @@
 
 package model.pet;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import model.supplies.Food;
@@ -165,6 +166,14 @@ public abstract class Pet implements Writable {
     @Override
     // EFFECTS: return object as a JSON Object
     public JSONObject toJson() {
-        return null;
+        JSONObject petJson = new JSONObject()
+                .put("name", name)
+                .put("hunger", hunger)
+                .put("happiness", happiness)
+                .put("cleanliness", cleanliness)
+                .put("health", health)
+                .put("type", type)
+                .put("isInjured", isInjuried);
+        return petJson;
     }
 }

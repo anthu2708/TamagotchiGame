@@ -3,9 +3,11 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import model.pet.Pet;
+import persistence.JsonReader;
 import persistence.Writable;
 
 /**
@@ -59,6 +61,13 @@ public class House implements Writable {
     @Override
     // EFFECTS: return object as a JSON Object
     public JSONObject toJson() {
-        return null;
+        JSONObject houseJson = new JSONObject();
+        JSONArray petsArray = new JSONArray();
+        for (Pet p: pets) {
+            JSONObject petJson = p.toJson();
+            petsArray.put(petJson);
+        }
+        houseJson.put("pets", petsArray);
+        return houseJson;
     }
 }

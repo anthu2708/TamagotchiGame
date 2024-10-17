@@ -2,6 +2,7 @@ package model.supplies;
 
 import java.util.*;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 /**
@@ -95,7 +96,22 @@ public class MedicineBox {
 
     // EFFECTS: return object as a JSON Object
     public JSONObject toJson() {
-        return null;
+        JSONObject medicineBoxJson = new JSONObject();
+        JSONArray pillsArray = new JSONArray();
+        for (Map.Entry<Pill, Integer> entry : pills.entrySet()) {
+            Pill pill = entry.getKey();
+            int quantity = entry.getValue();
+            JSONObject jsonPill = new JSONObject()
+                        .put("name", pill.getName())
+                        .put("cost", pill.getCost())
+                        .put("nutritionValue", pill.getNutrition())
+                        .put("healthValue", pill.getHealth())
+                        .put("happinessValue", pill.getHappiness())
+                        .put("quantity", quantity);
+            pillsArray.put(jsonPill);
+        }
+        medicineBoxJson.put("pills", pillsArray);
+        return medicineBoxJson;
     }
 }
 

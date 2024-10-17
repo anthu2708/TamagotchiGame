@@ -2,6 +2,7 @@ package model.supplies;
 
 import java.util.*;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 /**
@@ -49,13 +50,13 @@ public class Fridge {
         for (Map.Entry<Food, Integer> entry : foodItems.entrySet()) {
             Food food = entry.getKey();
             sb.append(index++)
-            .append(". ")
-            .append(food.getName())
-            .append(" (Quantity: ")
-            .append(entry.getValue())
-            .append(", Hunger Points: ")
-            .append(food.getNutritionValue())
-                            .append(")\n");
+                    .append(". ")
+                    .append(food.getName())
+                    .append(" (Quantity: ")
+                    .append(entry.getValue())
+                    .append(", Hunger Points: ")
+                    .append(food.getNutritionValue())
+                    .append(")\n");
         }
         return sb.toString();
     }
@@ -75,7 +76,7 @@ public class Fridge {
 
     // REQUIRES: the fridge is not empty
     // EFFECTS: returns a specific food item's quantity by index
-    //          return -1 if fail (index not in the list)
+    // return -1 if fail (index not in the list)
     public int getQuantityByIndex(int index) {
         int i = 1;
         for (Map.Entry<Food, Integer> entry : foodItems.entrySet()) {
@@ -94,6 +95,19 @@ public class Fridge {
 
     // EFFECTS: return object as a JSON Object
     public JSONObject toJson() {
-        return null;
+        JSONObject fridgeJson = new JSONObject();
+        JSONArray foods = new JSONArray();
+        for (Map.Entry<Food, Integer> entry : foodItems.entrySet()) {
+            Food food = entry.getKey();
+            int quantity = entry.getValue();
+            JSONObject jsonFood = new JSONObject()
+                        .put("name", food.getName())
+                        .put("nutritionValue", food.getNutritionValue())
+                        .put("cost", food.getCost())
+                        .put("quantity", quantity);
+            foods.put(jsonFood);
+        }
+        fridgeJson.put("foodItems", foods);
+        return fridgeJson;
     }
 }
