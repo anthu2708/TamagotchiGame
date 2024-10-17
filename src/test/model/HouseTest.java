@@ -146,18 +146,21 @@ class HouseTest {
         p1.setHappiness(90);
         p1.setCleanliness(75);
         p1.setHealth(100);
+        p1.setInjured();
 
         Pet p2 = new Meomo("Meomo");
         p2.setHunger(60);
         p2.setHappiness(70);
         p2.setCleanliness(50);
         p2.setHealth(15);
+        p2.setInjured();
 
         Pet p3 = new Donukie("Donukie");
         p3.setHunger(50);
         p3.setHappiness(40);
         p3.setCleanliness(30);
         p3.setHealth(60);
+        p3.setInjured();
 
         house.addPet(p1);
         house.addPet(p2);

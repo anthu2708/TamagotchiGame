@@ -113,18 +113,21 @@ class JsonWriterTest extends JsonTest {
         p1.setHappiness(90);
         p1.setCleanliness(75);
         p1.setHealth(100);
+        p1.setInjured();
 
         Pet p2 = new Meomo("Meomo");
         p2.setHunger(60);
         p2.setHappiness(70);
         p2.setCleanliness(50);
         p2.setHealth(15);
+        p2.setInjured();
 
         Pet p3 = new Donukie("Donukie");
         p3.setHunger(50);
         p3.setHappiness(40);
         p3.setCleanliness(30);
         p3.setHealth(60);
+        p3.setInjured();
 
         house.addPet(p1);
         house.addPet(p2);
@@ -164,8 +167,8 @@ class JsonWriterTest extends JsonTest {
 
     void testMBReaderGeneralGame(MedicineBox medicineBox) {
         assertEquals(2, medicineBox.getPill().size());
-        checkPill("Painkiller", 50, 20, 10, 5, medicineBox.getPillByIndex(0));
-        checkPill("Vitamin", 30, 15, 5, 10, medicineBox.getPillByIndex(1));
+        checkPill("PainKiller", 50, 20, 10, 5, medicineBox.getPillByIndex(1));
+        checkPill("Vitamin", 30, 15, 5, 10, medicineBox.getPillByIndex(2));
         assertEquals(1, medicineBox.getQuantityByIndex(1));
         assertEquals(1, medicineBox.getQuantityByIndex(2));
     }

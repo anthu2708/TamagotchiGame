@@ -114,9 +114,21 @@ class MedicineBoxTest {
 
     @Test
     void testToJson() {
-        medicineBox.addPill(new Pill("Painkiller", 50, 20, 10, 5));
-        medicineBox.addPill(new Pill("Painkiller", 50, 20, 10, 5));
-        medicineBox.addPill(new Pill("Vitamin", 30, 15, 5, 10));
+        Pill painKiller = new Pill("Painkiller", 50, 20, 10, 5);
+        Pill vitamin = new Pill("Vitamin", 30, 15, 5, 10);
+        medicineBox.addPill(painKiller);
+        medicineBox.addPill(painKiller);
+        medicineBox.addPill(vitamin);
+
+        JSONObject expectedJson = initExpectedJson();
+        
+
+        JSONObject actualJson = medicineBox.toJson();
+        assertEquals(expectedJson.toString(), actualJson.toString());
+    }
+
+    // helper
+    JSONObject initExpectedJson() {
         JSONObject expectedJson = new JSONObject();
         JSONArray pillsArray = new JSONArray();
         pillsArray.put(new JSONObject()
@@ -134,8 +146,6 @@ class MedicineBoxTest {
                 .put("happinessValue", 10)
                 .put("quantity", 1));
         expectedJson.put("pills", pillsArray);
-
-        JSONObject actualJson = medicineBox.toJson();
-        assertEquals(expectedJson.toString(), actualJson.toString());
+        return expectedJson;
     }
 }

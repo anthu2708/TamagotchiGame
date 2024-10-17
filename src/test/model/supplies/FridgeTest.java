@@ -109,9 +109,11 @@ class FridgeTest {
 
     @Test
     void testToJson() {
-        fridge.addFood(new Food("Steak", 40, 20));
-        fridge.addFood(new Food("Apple", 5, 2));
-        fridge.addFood(new Food("Steak", 40, 20));
+        Food steak = new Food("Steak", 40, 20);
+        Food apple = new Food("Apple", 5, 2);
+        fridge.addFood(steak);
+        fridge.addFood(apple);
+        fridge.addFood(steak);
         JSONObject expectedJson = new JSONObject();
         JSONArray foodItemsArray = new JSONArray();
         foodItemsArray.put(new JSONObject()
