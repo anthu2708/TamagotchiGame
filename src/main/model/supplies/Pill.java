@@ -49,8 +49,4 @@ public class Pill {
         return happinessValue;
     }
 
-    // EFFECTS: return object as a JSON Object
-    public JSONObject toJson() {
-        return null;
-    }
 }

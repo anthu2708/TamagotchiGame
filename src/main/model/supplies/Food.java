@@ -31,9 +31,4 @@ public class Food {
         return cost;
     }
 
-    // EFFECTS: return object as a JSON Object
-    public JSONObject toJson() {
-        return null;
-    }
-
 }
