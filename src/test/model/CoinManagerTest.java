@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.json.JSONObject;
+
 class CoinManagerTest {
     private CoinManager coinManager;
 
@@ -34,6 +36,16 @@ class CoinManagerTest {
     void testSubtractToZero() {
         coinManager.subtract(100);
         assertEquals(0, coinManager.getValue());
+    }
+
+    @Test
+    void testToJson() {
+        CoinManager coinCoinManager = new CoinManager(100);
+        JSONObject expectedJson = new JSONObject();
+        expectedJson.put("coins", 100);
+
+        JSONObject actualJson = coinCoinManager.toJson();
+        assertEquals(expectedJson.toString(), actualJson.toString());
     }
 
     

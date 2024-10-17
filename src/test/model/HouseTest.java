@@ -1,9 +1,12 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import model.pet.Donukie;
+import model.pet.Meap;
 import model.pet.Meomo;
 import model.pet.Pet;
 
@@ -86,5 +89,79 @@ class HouseTest {
         house.addPet(pet1);
         house.addPet(pet2);
         assertEquals(3, house.getPetCount());
+    }
+
+    @Test
+    void testToJson() {
+        House house = initHouse();
+        JSONObject actualJson = house.toJson();
+        JSONArray jsonPets = actualJson.getJSONArray("pets");
+        assertEquals(3, jsonPets.length());
+
+        JSONObject meapJson = jsonPets.getJSONObject(0);
+        JSONObject meomoJson = jsonPets.getJSONObject(1);
+        JSONObject donukieJson = jsonPets.getJSONObject(2);
+
+        checkMeap(meapJson);
+        checkMeomo(meomoJson);
+        checkDonukie(donukieJson);
+
+    }
+
+    void checkMeap(JSONObject meapJson) {
+        assertEquals("Meap", meapJson.getString("name")); 
+        assertEquals("Meap", meapJson.getString("type"));
+        assertEquals(80, meapJson.getInt("hunger"));
+        assertEquals(90, meapJson.getInt("happiness"));
+        assertEquals(75, meapJson.getInt("cleanliness"));
+        assertEquals(100, meapJson.getInt("health"));
+        assertFalse(meapJson.getBoolean("isInjured"));
+    }
+
+    void checkMeomo(JSONObject meomoJson) {
+        assertEquals("Meomo", meomoJson.getString("name")); 
+        assertEquals("Meomo", meomoJson.getString("type"));
+        assertEquals(60, meomoJson.getInt("hunger"));
+        assertEquals(70, meomoJson.getInt("happiness"));
+        assertEquals(50, meomoJson.getInt("cleanliness"));
+        assertEquals(15, meomoJson.getInt("health"));
+        assertTrue(meomoJson.getBoolean("isInjured"));
+    }
+
+    void checkDonukie(JSONObject donukieJson) {
+        assertEquals("Donukie", donukieJson.getString("name")); 
+        assertEquals("Donukie", donukieJson.getString("type"));
+        assertEquals(50, donukieJson.getInt("hunger"));
+        assertEquals(40, donukieJson.getInt("happiness"));
+        assertEquals(30, donukieJson.getInt("cleanliness"));
+        assertEquals(60, donukieJson.getInt("health"));
+        assertFalse(donukieJson.getBoolean("isInjured"));
+    }
+
+    House initHouse() {
+        House house = new House();
+
+        Pet p1 = new Meap("Meap");
+        p1.setHunger(80);
+        p1.setHappiness(90);
+        p1.setCleanliness(75);
+        p1.setHealth(100);
+
+        Pet p2 = new Meomo("Meomo");
+        p2.setHunger(60);
+        p2.setHappiness(70);
+        p2.setCleanliness(50);
+        p2.setHealth(15);
+
+        Pet p3 = new Donukie("Donukie");
+        p3.setHunger(50);
+        p3.setHappiness(40);
+        p3.setCleanliness(30);
+        p3.setHealth(60);
+
+        house.addPet(p1);
+        house.addPet(p2);
+        house.addPet(p3);
+        return house;
     }
 }

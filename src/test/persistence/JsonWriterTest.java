@@ -110,27 +110,28 @@ class JsonWriterTest extends JsonTest {
 
         Pet p1 = new Meap("Meap");
         p1.setHunger(80);
-        p1.setCleanliness(75);
+        p1.setHappiness(90);
         p1.setCleanliness(75);
         p1.setHealth(100);
 
         Pet p2 = new Meomo("Meomo");
-        p1.setHunger(60);
-        p1.setCleanliness(70);
-        p1.setCleanliness(50);
-        p1.setHealth(15);
+        p2.setHunger(60);
+        p2.setHappiness(70);
+        p2.setCleanliness(50);
+        p2.setHealth(15);
 
         Pet p3 = new Donukie("Donukie");
-        p1.setHunger(50);
-        p1.setCleanliness(40);
-        p1.setCleanliness(30);
-        p1.setHealth(60);
+        p3.setHunger(50);
+        p3.setHappiness(40);
+        p3.setCleanliness(30);
+        p3.setHealth(60);
 
         house.addPet(p1);
         house.addPet(p2);
         house.addPet(p3);
         return house;
     }
+    
 
     void checkGeneralGame(Game loadedGame) {
         House readHouse = loadedGame.getHouse();

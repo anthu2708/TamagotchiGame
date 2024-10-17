@@ -1,5 +1,7 @@
 package model.supplies;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -105,6 +107,28 @@ class FridgeTest {
 
     }
 
+    @Test
+    void testToJson() {
+        fridge.addFood(new Food("Steak", 40, 20));
+        fridge.addFood(new Food("Apple", 5, 2));
+        fridge.addFood(new Food("Steak", 40, 20));
+        JSONObject expectedJson = new JSONObject();
+        JSONArray foodItemsArray = new JSONArray();
+        foodItemsArray.put(new JSONObject()
+                .put("name", "Steak")
+                .put("nutritionValue", 40)
+                .put("cost", 20)
+                .put("quantity", 2));
+        foodItemsArray.put(new JSONObject()
+                .put("name", "Apple")
+                .put("nutritionValue", 5)
+                .put("cost", 2)
+                .put("quantity", 1));
+        expectedJson.put("foodItems", foodItemsArray);
+
+        JSONObject actualJson = fridge.toJson();
+        assertEquals(expectedJson.toString(), actualJson.toString());
+    }
 
 
 }

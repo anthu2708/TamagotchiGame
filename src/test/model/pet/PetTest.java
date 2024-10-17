@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -156,11 +157,31 @@ public class PetTest {
     @Test
     void testGetStatus() {
         String returnString =  "Pet Fluffy - Pet Type: Meap\n"
-        + "Hunger: 50\n"
-        + "Happiness: 50\n"
-        + "Health: 100\n"
-        + "Cleanliness: 100";
+                    + "Hunger: 50\n"
+                    + "Happiness: 50\n"
+                    + "Health: 100\n"
+                    + "Cleanliness: 100";
         assertEquals(returnString, meap.getStatus());
     }
 
+    @Test
+    void testToJson() {
+        // Init
+        Pet pet = new Meap("Buddy");
+        pet.setHunger(30);
+        pet.setHappiness(70);
+        pet.setHealth(80);
+        pet.setCleanliness(90);
+
+        JSONObject json = pet.toJson();
+
+        assertEquals("Buddy", json.getString("name"));
+        assertEquals("Meap", json.getString("type"));
+        assertEquals(30, json.getInt("hunger"));
+        assertEquals(70, json.getInt("happiness"));
+        assertEquals(80, json.getInt("health"));
+        assertEquals(90, json.getInt("cleanliness"));
+        assertEquals(false, json.getBoolean("isInjured"));
+    }
 }
+

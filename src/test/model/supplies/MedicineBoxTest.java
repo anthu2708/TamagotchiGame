@@ -1,6 +1,9 @@
 package model.supplies;
 
 import java.util.*;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -107,5 +110,32 @@ class MedicineBoxTest {
         assertEquals(1, medicineBox.getQuantityByIndex(1));
         assertEquals(2, medicineBox.getQuantityByIndex(2));
         assertEquals(-1, medicineBox.getQuantityByIndex(3));
+    }
+
+    @Test
+    void testToJson() {
+        medicineBox.addPill(new Pill("Painkiller", 50, 20, 10, 5));
+        medicineBox.addPill(new Pill("Painkiller", 50, 20, 10, 5));
+        medicineBox.addPill(new Pill("Vitamin", 30, 15, 5, 10));
+        JSONObject expectedJson = new JSONObject();
+        JSONArray pillsArray = new JSONArray();
+        pillsArray.put(new JSONObject()
+                .put("name", "Painkiller")
+                .put("cost", 50)
+                .put("nutritionValue", 20)
+                .put("healthValue", 10)
+                .put("happinessValue", 5)
+                .put("quantity", 2));
+        pillsArray.put(new JSONObject()
+                .put("name", "Vitamin")
+                .put("cost", 30)
+                .put("nutritionValue", 15)
+                .put("healthValue", 5)
+                .put("happinessValue", 10)
+                .put("quantity", 1));
+        expectedJson.put("pills", pillsArray);
+
+        JSONObject actualJson = medicineBox.toJson();
+        assertEquals(expectedJson.toString(), actualJson.toString());
     }
 }

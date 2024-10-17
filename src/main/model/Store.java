@@ -15,7 +15,7 @@ import persistence.Writable;
  * It provides methods to display available items, purchase food and pills, and manage inventory.
  */
 
-public class Store implements Writable {
+public class Store {
     private List<Food> availableFood;
     private List<Pill> availablePills;
 
@@ -106,9 +106,4 @@ public class Store implements Writable {
         return availableFood.size() + availablePills.size();
     }
 
-    @Override
-    // EFFECTS: return object as a JSON Object
-    public JSONObject toJson() {
-        return null;
-    }
 }
