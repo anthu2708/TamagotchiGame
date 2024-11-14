@@ -34,7 +34,14 @@ public class Button extends JButton {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
+        if (getModel().isPressed()) {
+            g.setColor(new Color(236, 242, 248)); 
+        } else {
+            g.setColor(new Color(163, 184, 204)); 
+        }
+
         g.fillOval(0, 0, getWidth(), getHeight());
+
 
         // Set color for "X" text
         g.setColor(Color.BLACK);
