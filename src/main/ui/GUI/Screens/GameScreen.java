@@ -11,17 +11,15 @@ import javax.swing.JPanel;
 import javax.swing.*;
 
 import model.Game;
-import ui.GUI.App;
-import ui.GUI.MainApp;
 import ui.GUI.PetGameApp;
 import ui.GUI.Screens.NavButton.ExitButton;
 import ui.GUI.Screens.NavButton.GoToButton;
 
-public abstract class AppScreen extends JPanel {
-    protected MainApp app;
+public class GameScreen extends JPanel {
+    protected PetGameApp app;
     protected Game game;
 
-    public AppScreen(MainApp app, String name) {
+    public GameScreen(PetGameApp app, String name) {
         this.app = app;
         this.game = app.getGame();
 
@@ -40,7 +38,7 @@ public abstract class AppScreen extends JPanel {
     // EFFECTS: add Menu Button to return to the Menu Screen when pressed
     public void createMenuButton() {
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        GoToButton goToButton = new GoToButton(app, "MenuScreen");
+        GoToButton goToButton = new GoToButton(app, "GameMenuScreen");
         buttonPanel.add(goToButton, BorderLayout.CENTER);
 
         add(buttonPanel, BorderLayout.SOUTH);
@@ -49,7 +47,7 @@ public abstract class AppScreen extends JPanel {
     // EFFECTS: add Menu Button to return to the Menu Screen when pressed
     public void createHomeButton() {
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        GoToButton goToButton = new GoToButton(app, "HomeScreen");
+        GoToButton goToButton = new GoToButton(app, "GameScreen");
         buttonPanel.add(goToButton, BorderLayout.CENTER);
 
         add(buttonPanel, BorderLayout.SOUTH);
