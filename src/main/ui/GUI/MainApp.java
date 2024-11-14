@@ -158,6 +158,11 @@ public class MainApp extends JFrame {
         return game;
     }
 
+    // return App's pets
+    public List<Pet> getPets() {
+        return game.getHouse().getPets();
+    }
+
     // main method to show MainApp screen
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
