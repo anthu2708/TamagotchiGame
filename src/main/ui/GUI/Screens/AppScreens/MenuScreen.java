@@ -22,7 +22,7 @@ public class MenuScreen extends AppScreen {
         mainApp = super.app;
         getButtonPanel();
 
-        createMenuButton();
+        createHomeButton();
     }
 
     // EFFECTS: add a new Button Panel to MenuScreen Panel

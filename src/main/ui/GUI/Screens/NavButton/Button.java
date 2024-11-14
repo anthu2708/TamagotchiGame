@@ -23,12 +23,6 @@ public class Button extends JButton {
         setContentAreaFilled(false); 
 
         setContentAreaFilled(false);
-        addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                handleExitAction();
-            }
-        });
     }
 
     @Override
@@ -52,22 +46,5 @@ public class Button extends JButton {
         g.drawString(content, x, y); // Draw X in the center
     }
 
-    // MODIFIES: app
-    // EFFECTS: handle exit action: save game progress or not
-    private void handleExitAction() {
-        int response = JOptionPane.showConfirmDialog(
-                app,
-                "Do you want to save your progress before exiting?",
-                "Exit Confirmation",
-                JOptionPane.YES_NO_CANCEL_OPTION,
-                JOptionPane.QUESTION_MESSAGE);
-
-        if (response == JOptionPane.YES_OPTION) {
-            app.saveGame(); // You will need to define the saveGame method
-            System.exit(0);
-        } else if (response == JOptionPane.NO_OPTION) {
-            System.exit(0);
-        }
-    }
 }
 

@@ -45,4 +45,13 @@ public abstract class AppScreen extends JPanel {
         add(buttonPanel, BorderLayout.SOUTH);
     }
 
+    // EFFECTS: add Menu Button to return to the Menu Screen when pressed
+    public void createHomeButton() {
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        GoToButton goToButton = new GoToButton(app, "HomeScreen");
+        buttonPanel.add(goToButton, BorderLayout.CENTER);
+
+        add(buttonPanel, BorderLayout.SOUTH);
+    }
+
 }
