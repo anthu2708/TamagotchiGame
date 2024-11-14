@@ -64,6 +64,7 @@ public class FridgeScreen extends GameScreen {
         Pet pet = super.app.getPet();
         pet.feed(food);
         fridge.removeFood(food);
+        JOptionPane.showMessageDialog(this, pet.getName() + " loves " + food.getName());
         reloadScreens("GameMenuScreen");
     }
 

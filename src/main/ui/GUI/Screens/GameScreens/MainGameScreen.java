@@ -8,7 +8,7 @@ import ui.GUI.Screens.GameScreen;
 
 public class MainGameScreen extends GameScreen {
 
-    // Fridge Screen to choose food from
+    // Main Game - pet display
     public MainGameScreen(PetGameApp petGameApp) {
         super(petGameApp, "Pet Room");
 
