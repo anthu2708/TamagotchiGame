@@ -29,7 +29,7 @@ import ui.GUI.Screens.AppScreens.PetsScreen;
 import ui.GUI.Screens.AppScreens.StatusScreen;
 import ui.GUI.Screens.NavButton.ExitButton;
 
-public class MainApp extends JFrame {
+public class MainApp extends App {
     private static final String JSON_STORE = "./data/petgame.json";
 
     private HomeScreen homeScreen;
@@ -40,14 +40,13 @@ public class MainApp extends JFrame {
 
     private Game game;
     private List<PetGameApp> petGames;
-    private CardLayout cardLayout;
-    private JPanel mainPanel;
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
 
 
     // main Application's interface
     public MainApp() {
+        super();
         this.game = new Game(
                 new House(),
                 new Fridge(),
@@ -57,24 +56,18 @@ public class MainApp extends JFrame {
         this.petGames = new ArrayList<>();
         this.jsonWriter = new JsonWriter(JSON_STORE);
         this.jsonReader = new JsonReader(JSON_STORE);
-        this.cardLayout = new CardLayout();
-        this.mainPanel = new JPanel(cardLayout);
 
-        setScreenLayout();
+        init();
+    }
+
+    // MODIFIES: this
+    // EFFECTS: init Game
+    public void init() {
         initScreens();
         showScreen("HomeScreen");
-
         addExitButton();
         add(mainPanel, BorderLayout.CENTER);
         setLocationRelativeTo(null);
-    }
-
-    private void setScreenLayout() {
-        setTitle("Tama");
-        setSize(390, 844);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setUndecorated(true);
-        setShape(new RoundRectangle2D.Double(0, 0, 390, 844, 40, 40));
     }
 
     // MODIFIES: this
@@ -135,7 +128,7 @@ public class MainApp extends JFrame {
         try {
             List<Pet> petList;
             List<PetGameApp> petGameApps = new ArrayList<>();
-            game = jsonReader.readGame();
+            this.game = jsonReader.readGame();
             petList = game.getHouse().getPets();
 
             for (Pet p : petList) {
