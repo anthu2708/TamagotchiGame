@@ -33,7 +33,7 @@ public abstract class AppScreen extends JPanel {
     public void initHeaderPanel(String title) {
         JLabel headerLabel = new JLabel(title, JLabel.CENTER);
         headerLabel.setBorder(BorderFactory.createEmptyBorder(20, 0, 20, 0));
-        add(headerLabel);
+        add(headerLabel, BorderLayout.NORTH);
     }
 
     // EFFECTS: add Menu Button to return to the Menu Screen when pressed
