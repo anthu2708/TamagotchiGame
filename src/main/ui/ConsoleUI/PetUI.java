@@ -1,4 +1,4 @@
-package ui;
+package ui.ConsoleUI;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
