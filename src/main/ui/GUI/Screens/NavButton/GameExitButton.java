@@ -17,7 +17,9 @@ public class GameExitButton extends Button {
         addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.exit(0);
+                SwingUtilities.invokeLater(() -> {
+                    app.setVisible(false);
+                });
             }
         });
     }
