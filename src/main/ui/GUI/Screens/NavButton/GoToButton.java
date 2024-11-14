@@ -11,10 +11,11 @@ public class GoToButton extends Button {
 
     public GoToButton(MainApp app, String screen) {
         super(app);
+        MainApp mainApp = super.app;
         addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                app.showScreen(screen);
+                mainApp.showScreen(screen);
             }
         });
     }

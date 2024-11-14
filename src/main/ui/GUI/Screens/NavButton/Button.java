@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 
 public class Button extends JButton {
 
-    private MainApp app;
+    public MainApp app;
 
     public Button(MainApp app) {
         this.app = app;

@@ -26,14 +26,14 @@ public class ExitButton extends Button {
     // EFFECTS: handle exit action: save game progress or not
     private void handleExitAction() {
         int response = JOptionPane.showConfirmDialog(
-                app,
+                super.app,
                 "Do you want to save your progress before exiting?",
                 "Exit Confirmation",
                 JOptionPane.YES_NO_CANCEL_OPTION,
                 JOptionPane.QUESTION_MESSAGE);
 
         if (response == JOptionPane.YES_OPTION) {
-            app.saveGame(); // You will need to define the saveGame method
+            super.app.saveGame();
             System.exit(0);
         } else if (response == JOptionPane.NO_OPTION) {
             System.exit(0);

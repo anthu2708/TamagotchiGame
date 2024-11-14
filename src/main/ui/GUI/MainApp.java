@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JFrame;
+import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
@@ -26,6 +27,7 @@ import ui.GUI.Screens.AppScreens.HomeScreen;
 import ui.GUI.Screens.AppScreens.MenuScreen;
 import ui.GUI.Screens.AppScreens.PetsScreen;
 import ui.GUI.Screens.AppScreens.StatusScreen;
+import ui.GUI.Screens.NavButton.ExitButton;
 
 public class MainApp extends JFrame {
     private static final String JSON_STORE = "./data/petgame.json";
@@ -62,6 +64,7 @@ public class MainApp extends JFrame {
         initScreens();
         showScreen("HomeScreen");
 
+        addExitButton();
         add(mainPanel, BorderLayout.CENTER);
         setLocationRelativeTo(null);
     }
@@ -97,6 +100,16 @@ public class MainApp extends JFrame {
         mainPanel.add(petsScreen, "PetsScreen");
         mainPanel.add(statusScreen, "StatusScreen");
     }
+
+
+    // EFFECTS: add Exit Button with a choice to Save game Progress or not
+    public void addExitButton() {
+        ExitButton exitButton = new ExitButton(this);
+        JLayeredPane layeredPane = getLayeredPane();
+        layeredPane.add(exitButton);
+        exitButton.setBounds(getWidth() - 40, 10, 30, 30);
+    }
+
 
     // REQUIRES: screenName has to be created in mainPanel
     // MODIFIES: this
