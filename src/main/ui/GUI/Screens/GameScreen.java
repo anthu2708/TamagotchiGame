@@ -20,10 +20,12 @@ import ui.GUI.Screens.NavButton.GoToButton;
 public class GameScreen extends JPanel {
     protected PetGameApp app;
     protected Game game;
+    protected Pet pet;
 
     public GameScreen(PetGameApp app, String name) {
         this.app = app;
         this.game = app.getGame();
+        this.pet = app.getPet();
 
         setLayout(new BorderLayout());
         initHeaderPanel(name);
