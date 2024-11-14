@@ -22,7 +22,7 @@ public class GameMenuScreen extends GameScreen {
 
         getButton(buttonPanel, "View Pet Status", "GameStatusScreen");
         getFeedButton(buttonPanel);
-        getButton(buttonPanel, "Play", "PlayScreen");
+        getPlayButton(buttonPanel);
         getHealButton(buttonPanel);
         getCleanButton(buttonPanel);
         getButton(buttonPanel, "Store", "StoreScreen");
@@ -67,6 +67,8 @@ public class GameMenuScreen extends GameScreen {
         button.addActionListener(e -> {
             if (!pet.needsPill()) {
                 JOptionPane.showMessageDialog(this, pet.getName() + " does not need to be healed!");
+            } else if (game.getMedicineBox().getPill().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "There is no pill. Please visit store to purchase Pill.");
             } else {
                 app.showScreen("MedBoxScreen");
             }
@@ -85,9 +87,26 @@ public class GameMenuScreen extends GameScreen {
                 JOptionPane.showMessageDialog(this, pet.getName() + " does not want to bathe!");
             } else {
                 pet.clean();
+                JOptionPane.showMessageDialog(this, pet.getName() + " is now clean!");
+                reloadScreens("GameScreen");
             }
         });
         buttonPanel.add(button);
     }
 
+    // MODIFIES: this
+    // EFFECTS: add Play Button with to specified JPanel 
+    //          when pressed, if pet is sick, throw message need to heal
+    //          else, go to Play Screen
+    private void getPlayButton(JPanel buttonPanel) {
+        JButton button = new JButton("Play");
+        button.addActionListener(e -> {
+            if (pet.needsAttention()[0] || pet.needsAttention()[1]) {
+                JOptionPane.showMessageDialog(this, pet.getName() + " can't play and need attention!");
+            } else {
+                app.showScreen("PlayScreen");
+            }
+        });
+        buttonPanel.add(button);
+    }
 }

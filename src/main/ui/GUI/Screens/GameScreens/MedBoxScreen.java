@@ -26,7 +26,7 @@ public class MedBoxScreen extends GameScreen {
     // EFFECTS: generate and add Panel with all Pills to choose from
     private void getPillsPanel() {
         JPanel itemPanel = new JPanel();
-        itemPanel.setLayout(new BoxLayout(itemPanel, BoxLayout.Y_AXIS));
+        itemPanel.setLayout(new GridLayout(3, 1, 10, 10));
 
         Map<Pill, Integer> pills = medicineBox.getPill();
         for (Map.Entry<Pill, Integer> entry : pills.entrySet()) {

@@ -1,8 +1,6 @@
 package ui.GUI.Screens;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.FlowLayout;
+import java.awt.*;
 
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
@@ -48,6 +46,33 @@ public class GameScreen extends JPanel {
         add(buttonPanel, BorderLayout.SOUTH);
     }
 
+     // EFFECTS: display coin add Menu Button to return to the Menu Screen when pressed
+     public void createStoreCoinButton() {
+        JPanel mainPanel = new JPanel();
+        mainPanel.setLayout(new GridLayout(2,1));
+        
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        GoToButton goToButton = new GoToButton(app, "GameMenuScreen");
+        goToButton.setBounds(40, 10, 30, 30);
+        buttonPanel.add(goToButton);
+
+        JPanel coinPanel = new JPanel();
+        coinPanel.add(new JLabel("Coin: " + game.getCoinManager().getValue()));
+        mainPanel.add(coinPanel);
+
+        mainPanel.add(buttonPanel);
+        add(mainPanel, BorderLayout.SOUTH);
+    }
+
+
+    // EFFECTS: add Menu Button to return to the Menu Screen when pressed
+    public void createStoreMenuButton() {
+        GoToButton goToButton = new GoToButton(app, "GameMenuScreen");
+        goToButton.setBounds(40, 10, 30, 30);
+        add(goToButton);
+    }
+
+
     // EFFECTS: add Menu Button to return to the Menu Screen when pressed
     public void createHomeButton() {
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
@@ -56,6 +81,8 @@ public class GameScreen extends JPanel {
 
         add(buttonPanel, BorderLayout.SOUTH);
     }
+
+    
 
     // MODIFIES: this
     // EFFECTS: reload all Screen and go to screen

@@ -25,8 +25,9 @@ public class StoreScreen extends GameScreen {
         this.store = new Store();
         this.coinManager = game.getCoinManager();
 
+
         addScrollPane();
-        createMenuButton();
+        createStoreCoinButton();
     }
 
     // MODIFIES: this
@@ -36,22 +37,16 @@ public class StoreScreen extends GameScreen {
 
         JScrollPane scrollPane = new JScrollPane(storePanel); // Set buttonPanel as viewport view
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        add(scrollPane, BorderLayout.CENTER);
+        add(scrollPane);
     }
 
     // MODIFIES: this 
     // EFFECTS: generate and add Store Panel with coin 
     //          and PillPanel all Pills to choose from
     private JPanel getStorePanel() {
-        JPanel mainPanel = new JPanel();
-        mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
 
         List<Food> foods = store.getFood();
         List<Pill> pills = store.getPill();
-
-        JPanel coinPanel = new JPanel();
-        coinPanel.add(new JLabel("Coin: " + coinManager.getValue()));
-        mainPanel.add(coinPanel);
 
         JPanel itemPanel = new JPanel();
         itemPanel.setBorder(new EmptyBorder(20, 20, 0, 20));
@@ -65,8 +60,6 @@ public class StoreScreen extends GameScreen {
             getPillButton(itemPanel, pill);
         }
 
-        mainPanel.add(itemPanel);
-        add(mainPanel);
         return itemPanel;
     }
 
