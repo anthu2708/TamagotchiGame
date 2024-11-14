@@ -33,7 +33,7 @@ public class ExitButton extends Button {
                 JOptionPane.QUESTION_MESSAGE);
 
         if (response == JOptionPane.YES_OPTION) {
-            super.app.saveGame();
+            ((MainApp) super.app).saveGame();
             System.exit(0);
         } else if (response == JOptionPane.NO_OPTION) {
             System.exit(0);
