@@ -11,9 +11,11 @@ import java.awt.event.ActionListener;
 public class Button extends JButton {
 
     public MainApp app;
+    private String content;
 
-    public Button(MainApp app) {
+    public Button(MainApp app, String content) {
         this.app = app;
+        this.content = content;
         setPreferredSize(new Dimension(30, 30)); // Set size of the round button
         setFont(new Font("Arial", Font.BOLD, 16)); // Font for "X"
         setBorderPainted(false);
@@ -43,12 +45,11 @@ public class Button extends JButton {
         g.fillOval(0, 0, getWidth(), getHeight());
 
 
-        // Set color for "X" text
         g.setColor(Color.BLACK);
         FontMetrics fm = g.getFontMetrics();
-        int x = (getWidth() - fm.stringWidth("X")) / 2; // Center the "X" horizontally
+        int x = (getWidth() - fm.stringWidth(content)) / 2; // Center the "X" horizontally
         int y = (getHeight() + fm.getAscent()) / 2; // Center the "X" vertically
-        g.drawString("X", x, y); // Draw X in the center
+        g.drawString(content, x, y); // Draw X in the center
     }
 
     // MODIFIES: app

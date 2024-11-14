@@ -12,7 +12,7 @@ public class ExitButton extends Button {
     private MainApp app;
 
     public ExitButton(MainApp app) {
-        super(app);
+        super(app, "X");
         addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

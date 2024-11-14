@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 public class GoToButton extends Button {
 
     public GoToButton(MainApp app, String screen) {
-        super(app);
+        super(app, "O");
         MainApp mainApp = super.app;
         addActionListener(new ActionListener() {
             @Override
