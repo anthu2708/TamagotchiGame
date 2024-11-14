@@ -2,6 +2,7 @@ package ui.GUI.Screens.NavButton;
 
 import javax.swing.*;
 
+import ui.GUI.App;
 import ui.GUI.MainApp;
 
 import java.awt.*;
@@ -10,10 +11,10 @@ import java.awt.event.ActionListener;
 
 public class Button extends JButton {
 
-    public MainApp app;
+    public App app;
     private String content;
 
-    public Button(MainApp app, String content) {
+    public Button(App app, String content) {
         this.app = app;
         this.content = content;
         setPreferredSize(new Dimension(30, 30)); // Set size of the round button

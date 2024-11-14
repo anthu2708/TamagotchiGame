@@ -1,22 +1,23 @@
 package ui.GUI.Screens.NavButton;
+
 import javax.swing.*;
 
-import ui.GUI.App;
 import ui.GUI.MainApp;
+import ui.GUI.PetGameApp;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class GoToButton extends Button {
+public class GameExitButton extends Button {
+    private PetGameApp app;
 
-    public GoToButton(App app, String screen) {
-        super(app, "O");
-        App mainApp = super.app;
+    public GameExitButton(PetGameApp app) {
+        super(app, "X");
         addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                mainApp.showScreen(screen);
+                System.exit(0);
             }
         });
     }
