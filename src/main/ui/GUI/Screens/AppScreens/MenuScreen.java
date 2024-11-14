@@ -3,45 +3,50 @@ package ui.GUI.Screens.AppScreens;
 import java.awt.GridLayout;
 import java.awt.BorderLayout;
 
-
-import javax.swing.JPanel;
-import javax.swing.BorderFactory;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import ui.GUI.MainApp;
 import ui.GUI.Screens.AppScreen;
 
 public class MenuScreen extends AppScreen {
+    private MainApp mainApp;
 
     // Menu Screen to either hatch egg, view pet status or go to each pet
     public MenuScreen(MainApp app) {
         super(app, "Menu");
+        mainApp = super.app;
+        getButtonPanel();
+
+        createMenuButton();
+    }
+
+    // EFFECTS: add a new Button Panel to MenuScreen Panel
+    //          with 3 buttons: Hatch, Status and Pets.
+    private void getButtonPanel() {
         JPanel buttonPanel = new JPanel();
-    buttonPanel.setBorder(new EmptyBorder(0,10,20,10));
-    buttonPanel.setLayout(new GridLayout(3,1,10,10));
-
-    getHatchButton(app, buttonPanel);
-    getPetChoosingButton(app, buttonPanel);
-    getPetStatusButton(app, buttonPanel);
-    add(buttonPanel, BorderLayout.CENTER);
+        buttonPanel.setBorder(new EmptyBorder(0, 10, 20, 10));
+        buttonPanel.setLayout(new GridLayout(3, 1, 10, 10));
+        getButton(buttonPanel, "HatchScreen", "Hatch new Egg");
+        getButton(buttonPanel, "StatusScreen", "View Pet Status");
+        getButton(buttonPanel, "PetsScreen", "Play With Pet");
+        add(buttonPanel, BorderLayout.CENTER);
     }
 
-    // EFFECTS: button to navigate to PetsChoosing Screen
-    private void getPetChoosingButton(MainApp app, JPanel buttonPanel) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getPetChoosingButton'");
-    }
-
-    // EFFECTS: button to navigate to Status Screen
-    private void getPetStatusButton(MainApp app, JPanel buttonPanel) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getPetStatusButton'");
-    }
-
-    // EFFECTS: button to navigate to hatch Screen
-    private void getHatchButton(MainApp app, JPanel buttonPanel) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getHatchButton'");
+    // EFFECTS: add button to navigate to PetsChoosing Screen to selected Panel
+    private void getButton(JPanel buttonPanel, String screen, String name) {
+        JButton petChoosingButton = new JButton(name);
+        petChoosingButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mainApp.showScreen(screen);
+            }
+        });
+        buttonPanel.add(petChoosingButton);
     }
 
 }
