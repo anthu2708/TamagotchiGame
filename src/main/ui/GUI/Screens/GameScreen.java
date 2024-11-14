@@ -11,6 +11,8 @@ import javax.swing.JPanel;
 import javax.swing.*;
 
 import model.Game;
+import model.pet.Pet;
+import model.supplies.Food;
 import ui.GUI.PetGameApp;
 import ui.GUI.Screens.NavButton.ExitButton;
 import ui.GUI.Screens.NavButton.GoToButton;
@@ -53,4 +55,10 @@ public class GameScreen extends JPanel {
         add(buttonPanel, BorderLayout.SOUTH);
     }
 
+    // MODIFIES: this
+    // EFFECTS: reload all Screen and go to screen
+    public void reloadScreens(String screen) {
+        app.initScreens();
+        app.showScreen(screen);
+    }
 }
