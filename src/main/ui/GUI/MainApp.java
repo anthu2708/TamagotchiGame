@@ -1,5 +1,6 @@
 package ui.GUI;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -42,7 +43,6 @@ public class MainApp extends App {
     private List<PetGameApp> petGames;
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
-
 
     // main Application's interface
     public MainApp() {
@@ -94,7 +94,6 @@ public class MainApp extends App {
         mainPanel.add(statusScreen, "StatusScreen");
     }
 
-
     // EFFECTS: add Exit Button with a choice to Save game Progress or not
     public void addExitButton() {
         ExitButton exitButton = new ExitButton(this);
@@ -102,7 +101,6 @@ public class MainApp extends App {
         layeredPane.add(exitButton);
         exitButton.setBounds(getWidth() - 40, 10, 30, 30);
     }
-
 
     // REQUIRES: screenName has to be created in mainPanel
     // MODIFIES: this
@@ -124,7 +122,13 @@ public class MainApp extends App {
 
     // MODIFIES: this
     // EFFECTS: loads game from file
+
     public String loadGame() {
+        File file = new File(JSON_STORE);
+        if (!file.exists()) {
+            return "No saved game file found.";
+        }
+
         try {
             List<Pet> petList;
             List<PetGameApp> petGameApps = new ArrayList<>();
@@ -139,10 +143,10 @@ public class MainApp extends App {
 
             initScreens();
             showScreen("HomeScreen");
-            
+
             return "Game Loaded";
         } catch (IOException e) {
-            return ("Unable to read from file: " + JSON_STORE);
+            return "Unable to read from file: " + JSON_STORE;
         }
     }
 
