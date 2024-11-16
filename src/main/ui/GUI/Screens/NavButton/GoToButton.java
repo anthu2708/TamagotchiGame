@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 public class GoToButton extends Button {
 
     public GoToButton(App app, String screen) {
-        super(app, "O");
+        super(app, "src\\main\\ui\\GUI\\PetImage\\BackGround\\HomeIcon.png");
         App mainApp = super.app;
         addActionListener(new ActionListener() {
             @Override

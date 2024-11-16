@@ -12,7 +12,7 @@ public class ExitButton extends Button {
     private MainApp app;
 
     public ExitButton(MainApp app) {
-        super(app, "X");
+        super(app, "src\\main\\ui\\GUI\\PetImage\\BackGround\\XIcon.png");
         addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

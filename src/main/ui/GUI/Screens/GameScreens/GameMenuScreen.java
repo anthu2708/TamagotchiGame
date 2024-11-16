@@ -7,17 +7,21 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import ui.GUI.App;
 import ui.GUI.PetGameApp;
 import ui.GUI.Screens.GameScreen;
+import ui.GUI.Screens.CustomizedPanel.RoundedButton;
 
 public class GameMenuScreen extends GameScreen {
 
     // Menu Screen to choose action from
     public GameMenuScreen(PetGameApp petGameApp) {
         super(petGameApp, "Menu");
+        
 
         JPanel buttonPanel = new JPanel();
-        buttonPanel.setBorder(new EmptyBorder(0, 10, 20, 10));
+        buttonPanel.setBackground(App.BACKGROUND_BLUE);
+        buttonPanel.setBorder(new EmptyBorder(30, 20, 30, 20));
         buttonPanel.setLayout(new GridLayout(6, 1, 10, 10));
 
         getButton(buttonPanel, "View Pet Status", "GameStatusScreen");
@@ -35,7 +39,7 @@ public class GameMenuScreen extends GameScreen {
     // EFFECTS: add new Button with Label name to specified JPanel 
     //          when pressed, go to specified game screen
     private void getButton(JPanel buttonPanel, String name, String screen) {
-        JButton button = new JButton(name);
+        JButton button = new RoundedButton(32, App.SUB_YELLOW, App.MAIN_YELLOW, App.TEXT_YELLOW, name);
         button.addActionListener(e -> {
             app.showScreen(screen);
         });
@@ -47,7 +51,7 @@ public class GameMenuScreen extends GameScreen {
     //          when pressed, if there is food in fridge, go to Fridge
     //          if no food, throw message to buy more
     private void getFeedButton(JPanel buttonPanel) {
-        JButton button = new JButton("Feed");
+        JButton button = new RoundedButton(32, App.SUB_YELLOW, App.MAIN_YELLOW, App.TEXT_YELLOW, "Feed");
         button.addActionListener(e -> {
             if (app.getGame().getFridge().isEmpty()) {
                 JOptionPane.showMessageDialog(this, "There is no food. Please visit store to purchase Food.");
@@ -63,7 +67,7 @@ public class GameMenuScreen extends GameScreen {
     //          when pressed, if pet does not need to be heal, throw message 
     //          else, go to Medicine Box
     private void getHealButton(JPanel buttonPanel) {
-        JButton button = new JButton("Heal");
+        JButton button = new RoundedButton(32, App.SUB_YELLOW, App.MAIN_YELLOW, App.TEXT_YELLOW, "Heal");
         button.addActionListener(e -> {
             if (!pet.needsPill()) {
                 JOptionPane.showMessageDialog(this, pet.getName() + " does not need to be healed!");
@@ -81,7 +85,7 @@ public class GameMenuScreen extends GameScreen {
     //          when pressed, if pet is clean, throw message 
     //          else, clean pet
     private void getCleanButton(JPanel buttonPanel) {
-        JButton button = new JButton("Clean");
+        JButton button = new RoundedButton(32, App.SUB_YELLOW, App.MAIN_YELLOW, App.TEXT_YELLOW, "Clean");
         button.addActionListener(e -> {
             if (!pet.needsAttention()[1]) {
                 JOptionPane.showMessageDialog(this, pet.getName() + " does not want to bathe!");
@@ -99,7 +103,7 @@ public class GameMenuScreen extends GameScreen {
     //          when pressed, if pet is sick, throw message need to heal
     //          else, go to Play Screen
     private void getPlayButton(JPanel buttonPanel) {
-        JButton button = new JButton("Play");
+        JButton button = new RoundedButton(32, App.SUB_YELLOW, App.MAIN_YELLOW, App.TEXT_YELLOW, "Play");
         button.addActionListener(e -> {
             if (pet.needsAttention()[0] || pet.needsAttention()[1]) {
                 JOptionPane.showMessageDialog(this, pet.getName() + " can't play and need attention!");

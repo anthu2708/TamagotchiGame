@@ -12,13 +12,14 @@ import java.awt.event.ActionListener;
 public class Button extends JButton {
 
     public App app;
-    private String content;
+    static int BORDER_THICKNESS = 5;
+    private Image content;
+    private String imgPath;
 
-    public Button(App app, String content) {
+    public Button(App app, String imgPath) {
         this.app = app;
-        this.content = content;
+        this.content = new ImageIcon(imgPath).getImage();
         setPreferredSize(new Dimension(30, 30)); // Set size of the round button
-        setFont(new Font("Arial", Font.BOLD, 16)); // Font for "X"
         setBorderPainted(false);
         setFocusPainted(false);
         setContentAreaFilled(false); 
@@ -32,19 +33,38 @@ public class Button extends JButton {
         super.paintComponent(g);
 
         if (getModel().isPressed()) {
-            g.setColor(new Color(236, 242, 248)); 
+            g.setColor(App.SUB_YELLOW); 
         } else {
-            g.setColor(new Color(163, 184, 204)); 
+            g.setColor(App.MAIN_YELLOW); 
         }
 
-        g.fillOval(0, 0, getWidth(), getHeight());
+        g.fillOval(BORDER_THICKNESS / 2, BORDER_THICKNESS / 2, 
+        getWidth() - BORDER_THICKNESS, getHeight() - BORDER_THICKNESS);
 
 
-        g.setColor(Color.BLACK);
-        FontMetrics fm = g.getFontMetrics();
-        int x = (getWidth() - fm.stringWidth(content)) / 2; // Center the "X" horizontally
-        int y = (getHeight() + fm.getAscent()) / 2; // Center the "X" vertically
-        g.drawString(content, x, y); // Draw X in the center
+        if (content != null) {
+            int imageX = (getWidth() - content.getWidth(null)) / 2 ;
+            int imageY = (getHeight() - content.getHeight(null)) / 2;
+            g.drawImage(content, imageX, imageY, this);
+        }
+    }
+
+    @Override
+    protected void paintBorder(Graphics g) {
+
+        
+        Graphics2D g2 = (Graphics2D) g;
+        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+
+        // Draw the border with rounded edges
+        if (getModel().isPressed()) {
+            g2.setColor(App.MAIN_YELLOW); 
+        } else {
+            g2.setColor(App.SUB_YELLOW); 
+        }
+        g2.setStroke(new BasicStroke(BORDER_THICKNESS));
+        g2.drawOval(BORDER_THICKNESS / 2, BORDER_THICKNESS / 2, 
+                         getWidth() - BORDER_THICKNESS, getHeight() - BORDER_THICKNESS);
     }
 
 }

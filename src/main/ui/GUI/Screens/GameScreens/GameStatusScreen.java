@@ -1,7 +1,10 @@
 package ui.GUI.Screens.GameScreens;
 
+import ui.GUI.App;
 import ui.GUI.PetGameApp;
 import ui.GUI.Screens.GameScreen;
+import ui.GUI.Screens.CustomizedPanel.RoundedButton;
+import ui.GUI.Screens.CustomizedPanel.RoundedPanel;
 
 import javax.swing.*;
 import javax.swing.border.*;
@@ -26,18 +29,39 @@ public class GameStatusScreen extends GameScreen {
     // MODIFIES: this
     // EFFECTS: crfeate and add Panel showing all pet status
     private void getPetStatusPanel(Pet p) {
-        List<String> status = getStatus(p);
-        JPanel smallPanel = new JPanel();
-        smallPanel.setBorder(new EmptyBorder(300, 40, 300, 40));
-        smallPanel.setLayout(new GridLayout(status.size(), 1, 10, 10));
+        JPanel mainPanel = new JPanel();
+        mainPanel.setOpaque(false);
+        mainPanel.setBorder(new EmptyBorder(250, 40, 200, 40));
 
-        for (String s : status) {
-            smallPanel.add(new JLabel(s));
-        }
-        add(smallPanel);
+        
+        addStatusPanel(mainPanel, pet);
+        add(mainPanel);
     }
 
     // MODIFIES: this
+    // EFFECTS: adding Pets panel with status, and delete button for each pet in
+    // house
+    private void addStatusPanel(JPanel jPanel, Pet pet) {
+        List<String> status = getStatus(pet);
+        JPanel smallPanel = new RoundedPanel(40, App.SUB_YELLOW, App.MAIN_YELLOW);
+        smallPanel.setLayout(new GridLayout(6, 1, 10, 0));
+        smallPanel.setBorder(new EmptyBorder(20, 40, 20, 40));
+
+        for (String s : status) {
+            JLabel lab = new JLabel(s);
+            lab.setForeground(App.TEXT_YELLOW);
+            smallPanel.add(lab);
+        }
+
+        String s = getAttention(pet);
+        JLabel lab = new JLabel(s);
+        lab.setForeground(App.TEXT_PINK);
+        smallPanel.add(lab);
+        jPanel.add(smallPanel);
+    }
+
+
+        // MODIFIES: this
     // EFFECTS: Returns a string summarizing the pet's status
     // including name, type, hunger, happiness, health, and cleanliness.
     private List<String> getStatus(Pet pet) {
@@ -48,16 +72,12 @@ public class GameStatusScreen extends GameScreen {
         int health = pet.getHealth();
         int cleanliness = pet.getCleanliness();
 
-
         List<String> status = new ArrayList<>();
-        status.add("Pet " + name + " - Pet Type: " + type + "\n");
+        status.add(name.toUpperCase() + " - " + type);
         status.add("Hunger: " + hunger + "\n");
         status.add("Happiness: " + happiness + "\n");
         status.add("Health: " + health + "\n");
         status.add("Cleanliness: " + cleanliness + "\n");
-        if (getAttention(pet) != "") {
-            status.add(getAttention(pet));
-        }
         return status;
     }
 

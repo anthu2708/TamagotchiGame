@@ -3,11 +3,9 @@ package ui.GUI.Screens;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.Image;
+import java.awt.*;
 
-import javax.swing.BorderFactory;
-import javax.swing.JLabel;
-import javax.swing.JLayeredPane;
-import javax.swing.JPanel;
 import javax.swing.*;
 
 import model.Game;
@@ -18,6 +16,7 @@ import ui.GUI.Screens.NavButton.ExitButton;
 import ui.GUI.Screens.NavButton.GoToButton;
 
 public abstract class AppScreen extends JPanel {
+    protected String BACKGROUND_PATH = "src\\main\\ui\\GUI\\PetImage\\BackGround\\BackGroundScreen.png";
     protected MainApp app;
     protected Game game;
 
@@ -29,6 +28,14 @@ public abstract class AppScreen extends JPanel {
         initHeaderPanel(name);
     }
 
+    // EFFECTS: customize background
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        Image backgroundImage = new ImageIcon(BACKGROUND_PATH).getImage();
+        // Draw the image as the background, scaled to the size of the panel
+        g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
+    }
 
     // EFFECTS: add header with specified name for
     public void initHeaderPanel(String title) {
@@ -40,6 +47,7 @@ public abstract class AppScreen extends JPanel {
     // EFFECTS: add Menu Button to return to the Menu Screen when pressed
     public void createMenuButton() {
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        buttonPanel.setOpaque(false);
         GoToButton goToButton = new GoToButton(app, "MenuScreen");
         buttonPanel.add(goToButton, BorderLayout.CENTER);
 
@@ -49,6 +57,7 @@ public abstract class AppScreen extends JPanel {
     // EFFECTS: add Menu Button to return to the Menu Screen when pressed
     public void createHomeButton() {
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        buttonPanel.setOpaque(false);
         GoToButton goToButton = new GoToButton(app, "HomeScreen");
         buttonPanel.add(goToButton, BorderLayout.CENTER);
 

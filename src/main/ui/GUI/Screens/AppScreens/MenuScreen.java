@@ -1,8 +1,5 @@
 package ui.GUI.Screens.AppScreens;
 
-import java.awt.GridLayout;
-import java.awt.BorderLayout;
-
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
@@ -10,36 +7,51 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import ui.GUI.App;
 import ui.GUI.MainApp;
 import ui.GUI.Screens.AppScreen;
+import ui.GUI.Screens.CustomizedPanel.RoundedButton;
+import ui.GUI.Screens.CustomizedPanel.RoundedPanel;
 
 public class MenuScreen extends AppScreen {
     private MainApp mainApp;
 
     // Menu Screen to either hatch egg, view pet status or go to each pet
     public MenuScreen(MainApp app) {
-        super(app, "Menu");
+        super(app, "");
         mainApp = super.app;
-        getButtonPanel();
+
+        JPanel mainPanel = new JPanel();
+        mainPanel.setOpaque(false);
+        mainPanel.setBorder(new EmptyBorder(150, 36, 100, 36));
+        getButtonPanel(mainPanel);
+        add(mainPanel);
 
         createHomeButton();
     }
 
     // EFFECTS: add a new Button Panel to MenuScreen Panel
-    //          with 3 buttons: Hatch, Status and Pets.
-    private void getButtonPanel() {
-        JPanel buttonPanel = new JPanel();
-        buttonPanel.setBorder(new EmptyBorder(0, 10, 20, 10));
+    // with 3 buttons: Hatch, Status and Pets.
+    private void getButtonPanel(JPanel mainPanel) {
+        JPanel buttonPanel = new RoundedPanel(48, App.SUB_YELLOW, App.MAIN_YELLOW);
+        buttonPanel.setBorder(new EmptyBorder(27, 23, 23, 27));
         buttonPanel.setLayout(new GridLayout(3, 1, 10, 10));
-        getButton(buttonPanel, "HatchScreen", "Hatch new Egg");
-        getButton(buttonPanel, "StatusScreen", "View Pet Status");
-        getButton(buttonPanel, "PetsScreen", "Play With Pet");
-        add(buttonPanel, BorderLayout.CENTER);
+
+        JLabel menu = new JLabel("Menu");
+        menu.setFont(new Font(menu.getFont().getName(), 1, 32));
+        menu.setForeground(App.TEXT_YELLOW); // Set text color to TEXT_YELLOW
+        menu.setHorizontalAlignment(SwingConstants.CENTER); // Optional: center the label text
+        buttonPanel.add(menu, BorderLayout.CENTER);
+
+        getButton(buttonPanel, "HatchScreen", "Hatch new Egg", App.SUB_PINK, App.MAIN_PINK, App.TEXT_PINK);
+        getButton(buttonPanel, "StatusScreen", "Go To Pet", App.SUB_GREEN, App.MAIN_GREEN, App.TEXT_GREEN);
+        mainPanel.add(buttonPanel);
     }
 
     // EFFECTS: add button to navigate to PetsChoosing Screen to selected Panel
-    private void getButton(JPanel buttonPanel, String screen, String name) {
-        JButton petChoosingButton = new JButton(name);
+    private void getButton(JPanel buttonPanel, String screen, String name, Color sub, Color main, Color text) {
+        JButton petChoosingButton = new RoundedButton(28, sub, main, text, name);
+        petChoosingButton.setPreferredSize(new Dimension(269, 100));
         petChoosingButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

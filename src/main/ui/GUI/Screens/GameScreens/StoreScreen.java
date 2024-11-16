@@ -4,8 +4,12 @@ import model.CoinManager;
 import model.Store;
 import model.supplies.Food;
 import model.supplies.Pill;
+import ui.GUI.App;
 import ui.GUI.PetGameApp;
 import ui.GUI.Screens.GameScreen;
+import ui.GUI.Screens.CustomizedPanel.CustomScrollBarUI;
+import ui.GUI.Screens.CustomizedPanel.RoundedButton;
+import ui.GUI.Screens.CustomizedPanel.RoundedPanel;
 
 import javax.swing.*;
 import javax.swing.border.*;
@@ -34,8 +38,13 @@ public class StoreScreen extends GameScreen {
     // EFFECTS: adding a scroll pane with Pet Button to go to Pet Game
     private void addScrollPane() {
         JPanel storePanel = getStorePanel();
+        storePanel.setBackground(App.BACKGROUND_BLUE);
 
-        JScrollPane scrollPane = new JScrollPane(storePanel); // Set buttonPanel as viewport view
+        JScrollPane scrollPane = new JScrollPane(storePanel); 
+
+        JScrollBar verticalBar = scrollPane.getVerticalScrollBar();
+        verticalBar.setPreferredSize(new Dimension(10, 0));
+        verticalBar.setUI(new CustomScrollBarUI()); 
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         add(scrollPane);
     }
@@ -50,7 +59,7 @@ public class StoreScreen extends GameScreen {
 
         JPanel itemPanel = new JPanel();
         itemPanel.setBorder(new EmptyBorder(20, 20, 0, 20));
-        itemPanel.setLayout(new GridLayout(foods.size() + pills.size(), 1, 0, 0));
+        itemPanel.setLayout(new GridLayout(foods.size() + pills.size(), 1, 0, 10));
 
         for (Food food : foods) {
             getFoodButton(itemPanel, food);
@@ -69,19 +78,19 @@ public class StoreScreen extends GameScreen {
     //          if not enough coin, throw message
     //          else, add to Fridge and go back to menu
     private void getFoodButton(JPanel mainPanel, Food food) {
-        JPanel smallPanel = new JPanel();
+        JPanel smallPanel = new RoundedPanel(48, App.SUB_YELLOW, App.MAIN_YELLOW);
 
         String name = food.getName();
         int nutriVal = food.getNutritionValue();
         int cost = food.getCost();
 
-        smallPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        smallPanel.setBorder(new EmptyBorder(  20, 20, 30, 20));
         smallPanel.setLayout(new GridLayout(4, 1, 0, 0));
         smallPanel.add(new JLabel(name));
         smallPanel.add(new JLabel("Hunger Point: " + nutriVal));
         smallPanel.add(new JLabel("Cost: " + cost));
 
-        JButton button = new JButton("Purchase");
+        JButton button = new RoundedButton(32, App.SUB_YELLOW, App.MAIN_YELLOW, App.TEXT_YELLOW, "Purchase");
         button.addActionListener(e -> handlePurchase(food, cost, "Food"));
         smallPanel.add(button);
         mainPanel.add(smallPanel);
@@ -93,14 +102,14 @@ public class StoreScreen extends GameScreen {
     //          if not enough coin, throw message
     //          else, add to MedBox and go back to menu
     private void getPillButton(JPanel mainPanel, Pill pill) {
-        JPanel smallPanel = new JPanel();
+        JPanel smallPanel = new RoundedPanel(48, App.SUB_YELLOW, App.MAIN_YELLOW);
         String name = pill.getName();
         int nutriVal = pill.getNutrition();
         int healthVal = pill.getHealth();
         int happinessValue = pill.getHappiness();
         int cost = pill.getCost();
 
-        smallPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        smallPanel.setBorder(new EmptyBorder(  20, 20, 20, 20));
         smallPanel.setLayout(new GridLayout(6, 1, 10, 0));
         smallPanel.add(new JLabel(name));
         smallPanel.add(new JLabel("Hunger Point: " + nutriVal));
@@ -108,7 +117,8 @@ public class StoreScreen extends GameScreen {
         smallPanel.add(new JLabel("Happiness Point: " + happinessValue));
         smallPanel.add(new JLabel("Cost: " + cost));
 
-        JButton button = new JButton("Purchase");
+        JButton button = new RoundedButton(32, App.SUB_YELLOW, App.MAIN_YELLOW, App.TEXT_YELLOW, "Purchase");
+        button.setPreferredSize(new Dimension(150, 30));
         button.addActionListener(e -> handlePurchase(pill, cost, "Pill"));
         smallPanel.add(button);
         mainPanel.add(smallPanel);

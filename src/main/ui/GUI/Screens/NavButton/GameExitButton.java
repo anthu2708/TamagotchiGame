@@ -13,7 +13,7 @@ public class GameExitButton extends Button {
     private PetGameApp app;
 
     public GameExitButton(PetGameApp app) {
-        super(app, "X");
+        super(app, "src\\main\\ui\\GUI\\PetImage\\BackGround\\XIcon.png");
         addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

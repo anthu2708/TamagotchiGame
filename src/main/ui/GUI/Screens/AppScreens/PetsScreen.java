@@ -11,9 +11,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
+import ui.GUI.App;
 import ui.GUI.MainApp;
 import ui.GUI.PetGameApp;
 import ui.GUI.Screens.AppScreen;
+import ui.GUI.Screens.CustomizedPanel.CustomScrollBarUI;
+import ui.GUI.Screens.CustomizedPanel.RoundedButton;
 
 public class PetsScreen extends AppScreen {
     private MainApp mainApp;
@@ -33,15 +36,23 @@ public class PetsScreen extends AppScreen {
         JPanel buttonPanel = initButtonPanel();
 
         JScrollPane scrollPane = new JScrollPane(buttonPanel); // Set buttonPanel as viewport view
+        // Customize the vertical scrollbar
+        JScrollBar verticalBar = scrollPane.getVerticalScrollBar();
+        verticalBar.setPreferredSize(new Dimension(10, 0));
+        verticalBar.setUI(new CustomScrollBarUI());
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+
         add(scrollPane, BorderLayout.CENTER);
     }
 
     // EFFECTS: return a JPanel with buttons for each pet
     private JPanel initButtonPanel() {
         List<Pet> pets = mainApp.getPets();
-        JPanel buttonPanel = new JPanel(new GridLayout(pets.size(), 1, 10, 10)); 
-        buttonPanel.setBorder(new EmptyBorder(10, 10, 20, 10));
+        JPanel buttonPanel = new JPanel();
+        int i = (pets.size() <= 10) ? 10 : pets.size();
+        buttonPanel.setLayout(new GridLayout(i, 1, 10, 10));
+        buttonPanel.setBackground(App.BACKGROUND_BLUE);
+        buttonPanel.setBorder(new EmptyBorder(25, 25, 25, 25));
 
         for (Pet pet : pets) {
             addButton(buttonPanel, pet);
@@ -51,17 +62,18 @@ public class PetsScreen extends AppScreen {
 
     // MODIFIES: this
     // EFFECTS: adding Pets button for each pet in house
-    //          open Pet Game when clicked
+    // open Pet Game when clicked
     private void addButton(JPanel jPanel, Pet pet) {
-        JButton petButton = new JButton(pet.getName());
+        JButton petButton = new RoundedButton(48, App.SUB_YELLOW, App.MAIN_YELLOW,
+                App.TEXT_YELLOW, pet.getName());
         petButton.addActionListener(e -> openPetGameApp(app.getGame(), pet));
         petButton.setFont(new Font("Arial", Font.BOLD, 16));
         petButton.setFocusPainted(false);
-        petButton.setPreferredSize(new Dimension(250, 200)); 
+        petButton.setPreferredSize(new Dimension(250, 50));
         jPanel.add(petButton);
     }
 
-     private void openPetGameApp(Game game, Pet pet) {
+    private void openPetGameApp(Game game, Pet pet) {
         SwingUtilities.invokeLater(() -> {
             PetGameApp petGameApp = new PetGameApp(game, pet);
             petGameApp.setVisible(true);
