@@ -1,7 +1,5 @@
 package model.supplies;
 
-import org.json.JSONObject;
-
 /**
  * Represents a Pill with attributes such as name, cost, nutrition value, health value, and happiness value.
  */

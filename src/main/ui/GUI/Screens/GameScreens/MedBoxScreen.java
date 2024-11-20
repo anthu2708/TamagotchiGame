@@ -1,4 +1,4 @@
-package ui.GUI.Screens.GameScreens;
+package ui.gui.screens.gamescreens;
 
 import javax.swing.*;
 import javax.swing.border.*;
@@ -7,15 +7,14 @@ import java.awt.*;
 import java.util.*;
 
 import model.pet.Pet;
-import model.supplies.Food;
 import model.supplies.MedicineBox;
 import model.supplies.Pill;
-import ui.GUI.App;
-import ui.GUI.PetGameApp;
-import ui.GUI.Screens.GameScreen;
-import ui.GUI.Screens.CustomizedPanel.CustomScrollBarUI;
-import ui.GUI.Screens.CustomizedPanel.RoundedButton;
-import ui.GUI.Screens.CustomizedPanel.RoundedPanel;
+import ui.gui.App;
+import ui.gui.PetGameApp;
+import ui.gui.screens.GameScreen;
+import ui.gui.screens.customizedpanel.CustomScrollBarUI;
+import ui.gui.screens.customizedpanel.RoundedButton;
+import ui.gui.screens.customizedpanel.RoundedPanel;
 
 public class MedBoxScreen extends GameScreen {
     private MedicineBox medicineBox;
@@ -39,7 +38,7 @@ public class MedBoxScreen extends GameScreen {
 
         JScrollBar verticalBar = scrollPane.getVerticalScrollBar();
         verticalBar.setPreferredSize(new Dimension(10, 0));
-        verticalBar.setUI(new CustomScrollBarUI()); 
+        verticalBar.setUI(new CustomScrollBarUI());
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 
         add(scrollPane, BorderLayout.CENTER);
@@ -56,7 +55,7 @@ public class MedBoxScreen extends GameScreen {
         for (Map.Entry<Pill, Integer> entry : pills.entrySet()) {
             Pill pill = entry.getKey();
             int quantity = entry.getValue();
-            for (int j = 0; j< quantity; j++) {
+            for (int j = 0; j < quantity; j++) {
                 addFoodPanel(buttonPanel, pill);
             }
         }
@@ -65,7 +64,7 @@ public class MedBoxScreen extends GameScreen {
 
     // MODIFIES: this
     // EFFECTS: adding Pills panel with status, and Use button for each Pill
-    private void addFoodPanel(JPanel jPanel, Pill pill) {
+    private void addFoodPanel(JPanel jpanel, Pill pill) {
         JPanel smallPanel = new RoundedPanel(40, App.SUB_YELLOW, App.MAIN_YELLOW);
         smallPanel.setLayout(new GridLayout(3, 1, 10, 0));
         smallPanel.setBorder(new EmptyBorder(20, 40, 20, 40));
@@ -81,19 +80,17 @@ public class MedBoxScreen extends GameScreen {
         smallPanel.add(new JLabel("Health Point: " + healthVal));
         smallPanel.add(new JLabel("Happiness Point: " + happinessValue));
 
-
         JButton button = new RoundedButton(28, App.SUB_PINK,
                 App.MAIN_PINK, App.TEXT_PINK, "Feed");
         button.setPreferredSize(new Dimension(80, 40));
         button.addActionListener(e -> heal(pill));
         smallPanel.add(button);
-        jPanel.add(smallPanel);
+        jpanel.add(smallPanel);
     }
 
-
-
-    // MODIFIES: this 
-    // EFFECTS: use pill to modify pet state and reload all Screen to match new state
+    // MODIFIES: this
+    // EFFECTS: use pill to modify pet state and reload all Screen to match new
+    // state
     private void heal(Pill pill) {
         Pet pet = super.app.getPet();
         pet.usePill(pill);

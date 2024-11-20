@@ -1,7 +1,5 @@
 package model.supplies;
 
-import org.json.JSONObject;
-
 /**
  * Represents a food item with a name, nutrition value, and cost.
  */
