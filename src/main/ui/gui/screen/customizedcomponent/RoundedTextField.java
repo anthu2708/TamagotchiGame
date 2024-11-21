@@ -1,21 +1,15 @@
-package ui.GUI.Screens.CustomizedPanel;
+package ui.gui.screen.customizedcomponent;
 
 import javax.swing.*;
-import javax.swing.border.AbstractBorder;
 
-import ui.GUI.App;
+import ui.gui.App;
 
 import java.awt.*;
-
-import javax.swing.*;
-import java.awt.*;
-import javax.swing.border.AbstractBorder;
 
 public class RoundedTextField extends JTextField {
 
     private int radius;
     private Color borderColor;
-    private Color fillColor;
     private int borderThickness;
 
     // Constructor for custom rounded text field
@@ -23,7 +17,6 @@ public class RoundedTextField extends JTextField {
         super(text);
         this.radius = 28;
         this.borderColor = App.SUB_YELLOW;
-        this.fillColor = Color.WHITE;
         this.borderThickness = 5;
         setOpaque(false); // Make the background transparent
     }

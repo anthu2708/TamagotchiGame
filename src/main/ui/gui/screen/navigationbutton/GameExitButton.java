@@ -1,16 +1,13 @@
-package ui.GUI.Screens.NavButton;
+package ui.gui.screen.navigationbutton;
 
 import javax.swing.*;
 
-import ui.GUI.MainApp;
-import ui.GUI.PetGameApp;
+import ui.gui.PetGameApp;
 
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class GameExitButton extends Button {
-    private PetGameApp app;
 
     public GameExitButton(PetGameApp app) {
         super(app, "src\\main\\ui\\GUI\\PetImage\\BackGround\\XIcon.png");

@@ -1,6 +1,6 @@
-package ui.ConsoleUI;
+package ui.consoleui;
 
-import ui.ConsoleUI.GameUI;
+import ui.consoleui.GameUI;
 
 public class Main {
     public static void main(String[] args) {

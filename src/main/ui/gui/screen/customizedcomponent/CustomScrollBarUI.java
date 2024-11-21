@@ -1,8 +1,8 @@
-package ui.GUI.Screens.CustomizedPanel;
+package ui.gui.screen.customizedcomponent;
 
 import javax.swing.plaf.basic.BasicScrollBarUI;
 
-import ui.GUI.App;
+import ui.gui.App;
 
 import java.awt.*;
 import javax.swing.*;

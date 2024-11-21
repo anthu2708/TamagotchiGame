@@ -1,10 +1,7 @@
-package ui.GUI.Screens.NavButton;
-import javax.swing.*;
+package ui.gui.screen.navigationbutton;
 
-import ui.GUI.App;
-import ui.GUI.MainApp;
+import ui.gui.App;
 
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 

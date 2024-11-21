@@ -1,6 +1,5 @@
 package persistence;
 
-import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
 
 import model.Game;

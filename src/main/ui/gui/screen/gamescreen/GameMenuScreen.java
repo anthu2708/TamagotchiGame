@@ -1,16 +1,14 @@
-package ui.GUI.Screens.GameScreens;
+package ui.gui.screen.gamescreen;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-import ui.GUI.App;
-import ui.GUI.PetGameApp;
-import ui.GUI.Screens.GameScreen;
-import ui.GUI.Screens.CustomizedPanel.RoundedButton;
+import ui.gui.App;
+import ui.gui.PetGameApp;
+import ui.gui.screen.GameScreen;
+import ui.gui.screen.customizedcomponent.RoundedButton;
 
 public class GameMenuScreen extends GameScreen {
 

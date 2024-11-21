@@ -1,7 +1,6 @@
-package ui.GUI.Screens.AppScreens;
+package ui.gui.screen.appscreen;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
 
@@ -10,20 +9,18 @@ import javax.swing.*;
 
 import model.pet.Egg;
 import model.pet.Pet;
-import ui.GUI.App;
-import ui.GUI.MainApp;
-import ui.GUI.Screens.AppScreen;
-import ui.GUI.Screens.CustomizedPanel.RoundedButton;
-import ui.GUI.Screens.CustomizedPanel.RoundedPanel;
-import ui.GUI.Screens.CustomizedPanel.RoundedTextField;
+import ui.gui.App;
+import ui.gui.MainApp;
+import ui.gui.screen.AppScreen;
+import ui.gui.screen.customizedcomponent.RoundedButton;
+import ui.gui.screen.customizedcomponent.RoundedPanel;
+import ui.gui.screen.customizedcomponent.RoundedTextField;
 
 public class HatchScreen extends AppScreen {
-    private MainApp mainApp;
 
     // Hatching new Pet Screen
     public HatchScreen(MainApp app) {
         super(app, "");
-        this.mainApp = super.app;
 
         JPanel mainPanel = new JPanel();
         mainPanel.setOpaque(false);

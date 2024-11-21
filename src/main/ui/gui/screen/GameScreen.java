@@ -1,4 +1,4 @@
-package ui.GUI.Screens;
+package ui.gui.screen;
 
 import java.awt.*;
 
@@ -6,17 +6,14 @@ import javax.swing.*;
 
 import model.Game;
 import model.pet.Pet;
-import model.supplies.Food;
-import ui.GUI.App;
-import ui.GUI.PetGameApp;
-import ui.GUI.Screens.NavButton.ExitButton;
-import ui.GUI.Screens.NavButton.GoToButton;
+import ui.gui.PetGameApp;
+import ui.gui.screen.navigationbutton.GoToButton;
 
 public class GameScreen extends JPanel {
-    protected String BACKGROUND_PATH = "src\\main\\ui\\GUI\\PetImage\\BackGround\\BackGroundScreen.png";
+    protected String backgroundPath = "src\\main\\ui\\GUI\\PetImage\\BackGround\\BackGroundScreen.png";
     protected PetGameApp app;
     protected Game game;
-    public Pet pet;
+    protected Pet pet;
 
     public GameScreen(PetGameApp app, String name) {
         this.app = app;
@@ -26,7 +23,6 @@ public class GameScreen extends JPanel {
         setLayout(new BorderLayout());
         initHeaderPanel(name);
     }
-
 
     // EFFECTS: add header with specified name for
     public void initHeaderPanel(String title) {
@@ -39,7 +35,7 @@ public class GameScreen extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        Image backgroundImage = new ImageIcon(BACKGROUND_PATH).getImage();
+        Image backgroundImage = new ImageIcon(backgroundPath).getImage();
         // Draw the image as the background, scaled to the size of the panel
         g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
     }
@@ -54,10 +50,11 @@ public class GameScreen extends JPanel {
         add(buttonPanel, BorderLayout.SOUTH);
     }
 
-     // EFFECTS: display coin add Menu Button to return to the Menu Screen when pressed
-     public void createStoreCoinButton() {
+    // EFFECTS: display coin add Menu Button to return to the Menu Screen when
+    // pressed
+    public void createStoreCoinButton() {
         JPanel mainPanel = new JPanel();
-        mainPanel.setLayout(new GridLayout(2,1));
+        mainPanel.setLayout(new GridLayout(2, 1));
         mainPanel.setOpaque(false);
 
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
@@ -75,14 +72,12 @@ public class GameScreen extends JPanel {
         add(mainPanel, BorderLayout.SOUTH);
     }
 
-
     // EFFECTS: add Menu Button to return to the Menu Screen when pressed
     public void createStoreMenuButton() {
         GoToButton goToButton = new GoToButton(app, "GameMenuScreen");
         goToButton.setBounds(40, 10, 30, 30);
         add(goToButton);
     }
-
 
     // EFFECTS: add Menu Button to return to the Menu Screen when pressed
     public void createHomeButton() {
@@ -93,8 +88,6 @@ public class GameScreen extends JPanel {
 
         add(buttonPanel, BorderLayout.SOUTH);
     }
-
-    
 
     // MODIFIES: this
     // EFFECTS: reload all Screen and go to screen

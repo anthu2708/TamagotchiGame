@@ -1,4 +1,4 @@
-package ui.GUI.Screens.AppScreens;
+package ui.gui.screen.appscreen;
 
 import javax.swing.*;
 import javax.swing.border.*;
@@ -12,13 +12,13 @@ import java.awt.event.ActionListener;
 import java.util.List;
 import java.util.ArrayList;
 
-import ui.GUI.App;
-import ui.GUI.MainApp;
-import ui.GUI.PetGameApp;
-import ui.GUI.Screens.AppScreen;
-import ui.GUI.Screens.CustomizedPanel.CustomScrollBarUI;
-import ui.GUI.Screens.CustomizedPanel.RoundedButton;
-import ui.GUI.Screens.CustomizedPanel.RoundedPanel;
+import ui.gui.App;
+import ui.gui.MainApp;
+import ui.gui.PetGameApp;
+import ui.gui.screen.AppScreen;
+import ui.gui.screen.customizedcomponent.CustomScrollBarUI;
+import ui.gui.screen.customizedcomponent.RoundedButton;
+import ui.gui.screen.customizedcomponent.RoundedPanel;
 
 public class StatusScreen extends AppScreen {
     private MainApp mainApp;
@@ -44,7 +44,7 @@ public class StatusScreen extends AppScreen {
 
         JScrollBar verticalBar = scrollPane.getVerticalScrollBar();
         verticalBar.setPreferredSize(new Dimension(10, 0));
-        verticalBar.setUI(new CustomScrollBarUI()); 
+        verticalBar.setUI(new CustomScrollBarUI());
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 
         add(scrollPane, BorderLayout.CENTER);
@@ -67,7 +67,7 @@ public class StatusScreen extends AppScreen {
     // MODIFIES: this
     // EFFECTS: adding Pets panel with status, and delete button for each pet in
     // house
-    private void addStatusPanel(JPanel jPanel, Pet pet) {
+    private void addStatusPanel(JPanel jpanel, Pet pet) {
         List<String> status = getStatus(pet);
         JPanel smallPanel = new RoundedPanel(40, App.SUB_YELLOW, App.MAIN_YELLOW);
         smallPanel.setLayout(new GridLayout(8, 1, 10, 0));
@@ -84,6 +84,14 @@ public class StatusScreen extends AppScreen {
         lab.setForeground(App.TEXT_PINK);
         smallPanel.add(lab);
 
+        getPetButton(jpanel, pet, smallPanel);
+    }
+
+    // MODIFIES: this
+    // EFFECTS: get buttons:
+    // Pet game: when clicked, open Pet's Game Screen
+    // Delete Pet: when clicked, confirm again if want to delete and delete if ok
+    private void getPetButton(JPanel jpanel, Pet pet, JPanel smallPanel) {
         JButton goToPetButton = new RoundedButton(28, App.SUB_GREEN,
                 App.MAIN_GREEN, App.TEXT_GREEN, "Pet Game");
         goToPetButton.setPreferredSize(new Dimension(80, 40));
@@ -101,7 +109,7 @@ public class StatusScreen extends AppScreen {
 
         });
         smallPanel.add(deletePetButton);
-        jPanel.add(smallPanel);
+        jpanel.add(smallPanel);
     }
 
     // MODIFIES : this

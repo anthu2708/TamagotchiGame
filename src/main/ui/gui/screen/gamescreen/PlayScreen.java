@@ -1,20 +1,15 @@
-package ui.GUI.Screens.GameScreens;
+package ui.gui.screen.gamescreen;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
-import model.CoinManager;
-import model.Game;
-import model.pet.Pet;
-import ui.GUI.App;
-import ui.GUI.PetGameApp;
-import ui.GUI.Screens.GameScreen;
-import ui.GUI.Screens.CustomizedPanel.RoundedButton;
-import ui.GUI.Screens.CustomizedPanel.RoundedPanel;
+import ui.gui.App;
+import ui.gui.PetGameApp;
+import ui.gui.screen.GameScreen;
+import ui.gui.screen.customizedcomponent.RoundedButton;
+import ui.gui.screen.customizedcomponent.RoundedPanel;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class PlayScreen extends GameScreen {
 

@@ -1,18 +1,14 @@
-package ui.GUI;
+package ui.gui;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.JFrame;
 import javax.swing.JLayeredPane;
-import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 import java.awt.BorderLayout;
-import java.awt.CardLayout;
-import java.awt.geom.RoundRectangle2D;
 
 import model.CoinManager;
 import model.Game;
@@ -23,12 +19,12 @@ import model.supplies.Fridge;
 import model.supplies.MedicineBox;
 import persistence.JsonReader;
 import persistence.JsonWriter;
-import ui.GUI.Screens.AppScreens.HatchScreen;
-import ui.GUI.Screens.AppScreens.HomeScreen;
-import ui.GUI.Screens.AppScreens.MenuScreen;
-import ui.GUI.Screens.AppScreens.PetsScreen;
-import ui.GUI.Screens.AppScreens.StatusScreen;
-import ui.GUI.Screens.NavButton.ExitButton;
+import ui.gui.screen.appscreen.HatchScreen;
+import ui.gui.screen.appscreen.HomeScreen;
+import ui.gui.screen.appscreen.MenuScreen;
+import ui.gui.screen.appscreen.PetsScreen;
+import ui.gui.screen.appscreen.StatusScreen;
+import ui.gui.screen.navigationbutton.ExitButton;
 
 public class MainApp extends App {
     private static final String JSON_STORE = "./data/petgame.json";

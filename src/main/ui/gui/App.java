@@ -1,10 +1,8 @@
-package ui.GUI;
+package ui.gui;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.*;
-
-import model.Game;
 
 import java.awt.geom.RoundRectangle2D;
 
@@ -55,17 +53,17 @@ public abstract class App extends JFrame {
 
     // MODIFIES: this
     // EFFECT: reload all screens, and add to mainPanel
-    abstract public void initScreens();
+    abstract void initScreens();
 
 
     // EFFECTS: add Exit Button with a choice to Save game Progress or not
-    abstract public void addExitButton();
+    abstract void addExitButton();
 
 
     // REQUIRES: screenName has to be created in mainPanel
     // MODIFIES: this
     // EFFECTS: show the specified screen
-    abstract public void showScreen(String screenName);
+    public abstract void showScreen(String screenName);
 
 
 }

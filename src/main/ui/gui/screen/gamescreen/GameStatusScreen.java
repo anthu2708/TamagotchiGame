@@ -1,10 +1,9 @@
-package ui.GUI.Screens.GameScreens;
+package ui.gui.screen.gamescreen;
 
-import ui.GUI.App;
-import ui.GUI.PetGameApp;
-import ui.GUI.Screens.GameScreen;
-import ui.GUI.Screens.CustomizedPanel.RoundedButton;
-import ui.GUI.Screens.CustomizedPanel.RoundedPanel;
+import ui.gui.App;
+import ui.gui.PetGameApp;
+import ui.gui.screen.GameScreen;
+import ui.gui.screen.customizedcomponent.RoundedPanel;
 
 import javax.swing.*;
 import javax.swing.border.*;
@@ -12,8 +11,6 @@ import javax.swing.border.*;
 import model.pet.Pet;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -41,7 +38,7 @@ public class GameStatusScreen extends GameScreen {
     // MODIFIES: this
     // EFFECTS: adding Pets panel with status, and delete button for each pet in
     // house
-    private void addStatusPanel(JPanel jPanel, Pet pet) {
+    private void addStatusPanel(JPanel jpanel, Pet pet) {
         List<String> status = getStatus(pet);
         JPanel smallPanel = new RoundedPanel(40, App.SUB_YELLOW, App.MAIN_YELLOW);
         smallPanel.setLayout(new GridLayout(6, 1, 10, 0));
@@ -57,7 +54,7 @@ public class GameStatusScreen extends GameScreen {
         JLabel lab = new JLabel(s);
         lab.setForeground(App.TEXT_PINK);
         smallPanel.add(lab);
-        jPanel.add(smallPanel);
+        jpanel.add(smallPanel);
     }
 
 

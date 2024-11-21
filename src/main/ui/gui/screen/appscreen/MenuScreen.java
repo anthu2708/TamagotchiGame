@@ -1,4 +1,4 @@
-package ui.GUI.Screens.AppScreens;
+package ui.gui.screen.appscreen;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -7,11 +7,11 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import ui.GUI.App;
-import ui.GUI.MainApp;
-import ui.GUI.Screens.AppScreen;
-import ui.GUI.Screens.CustomizedPanel.RoundedButton;
-import ui.GUI.Screens.CustomizedPanel.RoundedPanel;
+import ui.gui.App;
+import ui.gui.MainApp;
+import ui.gui.screen.AppScreen;
+import ui.gui.screen.customizedcomponent.RoundedButton;
+import ui.gui.screen.customizedcomponent.RoundedPanel;
 
 public class MenuScreen extends AppScreen {
     private MainApp mainApp;
