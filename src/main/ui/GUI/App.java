@@ -1,14 +1,19 @@
-package ui.gui;
+package ui.GUI;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.*;
+
+import model.Game;
+
 import java.awt.geom.RoundRectangle2D;
+
 
 public abstract class App extends JFrame {
     public static final Color BACKGROUND_BLUE = new Color(218, 244, 255);
     public static final Color SUB_BLUE = new Color(191, 236, 255);
     public static final Color TEXT_BLUE = new Color(171, 230, 255);
+
 
     public static final Color MAIN_YELLOW = new Color(255, 246, 227);
     public static final Color SUB_YELLOW = new Color(255, 225, 161);
@@ -38,8 +43,9 @@ public abstract class App extends JFrame {
         setScreenLayout();
     }
 
-    public void setScreenLayout() {
 
+    public void setScreenLayout() {
+        
         setTitle("Tama");
         setSize(390, 844);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -49,14 +55,17 @@ public abstract class App extends JFrame {
 
     // MODIFIES: this
     // EFFECT: reload all screens, and add to mainPanel
-    public abstract void initScreens();
+    abstract public void initScreens();
+
 
     // EFFECTS: add Exit Button with a choice to Save game Progress or not
-    abstract void addExitButton();
+    abstract public void addExitButton();
+
 
     // REQUIRES: screenName has to be created in mainPanel
     // MODIFIES: this
     // EFFECTS: show the specified screen
-    public abstract void showScreen(String screenName);
+    abstract public void showScreen(String screenName);
+
 
 }

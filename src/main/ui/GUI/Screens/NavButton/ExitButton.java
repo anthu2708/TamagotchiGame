@@ -1,13 +1,15 @@
-package ui.gui.screens.navbutton;
+package ui.GUI.Screens.NavButton;
 
 import javax.swing.*;
 
-import ui.gui.MainApp;
+import ui.GUI.MainApp;
 
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ExitButton extends Button {
+    private MainApp app;
 
     public ExitButton(MainApp app) {
         super(app, "src\\main\\ui\\GUI\\PetImage\\BackGround\\XIcon.png");
@@ -18,6 +20,7 @@ public class ExitButton extends Button {
             }
         });
     }
+
 
     // MODIFIES: app
     // EFFECTS: handle exit action: save game progress or not
@@ -37,3 +40,4 @@ public class ExitButton extends Button {
         }
     }
 }
+

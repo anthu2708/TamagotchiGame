@@ -1,19 +1,31 @@
-package ui.gui;
+package ui.GUI;
 
+import javax.swing.JFrame;
 import javax.swing.JLayeredPane;
+import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 
 import java.awt.BorderLayout;
+import java.awt.CardLayout;
+import java.awt.geom.RoundRectangle2D;
+
 
 import model.Game;
 import model.pet.Pet;
-import ui.gui.screens.gamescreens.FridgeScreen;
-import ui.gui.screens.gamescreens.GameMenuScreen;
-import ui.gui.screens.gamescreens.GameStatusScreen;
-import ui.gui.screens.gamescreens.MainGameScreen;
-import ui.gui.screens.gamescreens.MedBoxScreen;
-import ui.gui.screens.gamescreens.PlayScreen;
-import ui.gui.screens.gamescreens.StoreScreen;
-import ui.gui.screens.navbutton.GameExitButton;
+import ui.GUI.Screens.GameScreen;
+import ui.GUI.Screens.AppScreens.HatchScreen;
+import ui.GUI.Screens.AppScreens.HomeScreen;
+import ui.GUI.Screens.AppScreens.MenuScreen;
+import ui.GUI.Screens.AppScreens.PetsScreen;
+import ui.GUI.Screens.AppScreens.StatusScreen;
+import ui.GUI.Screens.GameScreens.FridgeScreen;
+import ui.GUI.Screens.GameScreens.GameMenuScreen;
+import ui.GUI.Screens.GameScreens.GameStatusScreen;
+import ui.GUI.Screens.GameScreens.MainGameScreen;
+import ui.GUI.Screens.GameScreens.MedBoxScreen;
+import ui.GUI.Screens.GameScreens.PlayScreen;
+import ui.GUI.Screens.GameScreens.StoreScreen;
+import ui.GUI.Screens.NavButton.GameExitButton;
 
 public class PetGameApp extends App {
 
@@ -61,7 +73,7 @@ public class PetGameApp extends App {
         mainPanel.add(fridgeScreen, "FridgeScreen");
         mainPanel.add(gameMenuScreen, "GameMenuScreen");
         mainPanel.add(gameStatusScreen, "GameStatusScreen");
-        mainPanel.add(mainGameScreen, "GameScreen");
+        mainPanel.add(mainGameScreen, "GameScreen"); 
         mainPanel.add(medBoxScreen, "MedBoxScreen");
         mainPanel.add(storeScreen, "StoreScreen");
         mainPanel.add(playScreen, "PlayScreen");
@@ -91,6 +103,7 @@ public class PetGameApp extends App {
     public Pet getPet() {
         return pet;
     }
+
 
     // MODIFIES: this
     // EFFECTS: init Game

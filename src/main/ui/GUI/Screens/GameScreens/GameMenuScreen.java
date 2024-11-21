@@ -1,20 +1,23 @@
-package ui.gui.screens.gamescreens;
+package ui.GUI.Screens.GameScreens;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
-import ui.gui.App;
-import ui.gui.PetGameApp;
-import ui.gui.screens.GameScreen;
-import ui.gui.screens.customizedpanel.RoundedButton;
-
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import ui.GUI.App;
+import ui.GUI.PetGameApp;
+import ui.GUI.Screens.GameScreen;
+import ui.GUI.Screens.CustomizedPanel.RoundedButton;
 
 public class GameMenuScreen extends GameScreen {
 
     // Menu Screen to choose action from
     public GameMenuScreen(PetGameApp petGameApp) {
         super(petGameApp, "Menu");
+        
 
         JPanel buttonPanel = new JPanel();
         buttonPanel.setBackground(App.BACKGROUND_BLUE);
@@ -33,8 +36,8 @@ public class GameMenuScreen extends GameScreen {
     }
 
     // MODIFIES: this
-    // EFFECTS: add new Button with Label name to specified JPanel
-    // when pressed, go to specified game screen
+    // EFFECTS: add new Button with Label name to specified JPanel 
+    //          when pressed, go to specified game screen
     private void getButton(JPanel buttonPanel, String name, String screen) {
         JButton button = new RoundedButton(32, App.SUB_YELLOW, App.MAIN_YELLOW, App.TEXT_YELLOW, name);
         button.addActionListener(e -> {
@@ -44,9 +47,9 @@ public class GameMenuScreen extends GameScreen {
     }
 
     // MODIFIES: this
-    // EFFECTS: add Feed Button with to specified JPanel
-    // when pressed, if there is food in fridge, go to Fridge
-    // if no food, throw message to buy more
+    // EFFECTS: add Feed Button with to specified JPanel 
+    //          when pressed, if there is food in fridge, go to Fridge
+    //          if no food, throw message to buy more
     private void getFeedButton(JPanel buttonPanel) {
         JButton button = new RoundedButton(32, App.SUB_YELLOW, App.MAIN_YELLOW, App.TEXT_YELLOW, "Feed");
         button.addActionListener(e -> {
@@ -60,9 +63,9 @@ public class GameMenuScreen extends GameScreen {
     }
 
     // MODIFIES: this
-    // EFFECTS: add Heal Button with to specified JPanel
-    // when pressed, if pet does not need to be heal, throw message
-    // else, go to Medicine Box
+    // EFFECTS: add Heal Button with to specified JPanel 
+    //          when pressed, if pet does not need to be heal, throw message 
+    //          else, go to Medicine Box
     private void getHealButton(JPanel buttonPanel) {
         JButton button = new RoundedButton(32, App.SUB_YELLOW, App.MAIN_YELLOW, App.TEXT_YELLOW, "Heal");
         button.addActionListener(e -> {
@@ -78,9 +81,9 @@ public class GameMenuScreen extends GameScreen {
     }
 
     // MODIFIES: this
-    // EFFECTS: add Heal Button with to specified JPanel
-    // when pressed, if pet is clean, throw message
-    // else, clean pet
+    // EFFECTS: add Heal Button with to specified JPanel 
+    //          when pressed, if pet is clean, throw message 
+    //          else, clean pet
     private void getCleanButton(JPanel buttonPanel) {
         JButton button = new RoundedButton(32, App.SUB_YELLOW, App.MAIN_YELLOW, App.TEXT_YELLOW, "Clean");
         button.addActionListener(e -> {
@@ -96,9 +99,9 @@ public class GameMenuScreen extends GameScreen {
     }
 
     // MODIFIES: this
-    // EFFECTS: add Play Button with to specified JPanel
-    // when pressed, if pet is sick, throw message need to heal
-    // else, go to Play Screen
+    // EFFECTS: add Play Button with to specified JPanel 
+    //          when pressed, if pet is sick, throw message need to heal
+    //          else, go to Play Screen
     private void getPlayButton(JPanel buttonPanel) {
         JButton button = new RoundedButton(32, App.SUB_YELLOW, App.MAIN_YELLOW, App.TEXT_YELLOW, "Play");
         button.addActionListener(e -> {

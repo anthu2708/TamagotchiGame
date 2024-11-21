@@ -1,6 +1,7 @@
-package ui.gui.screens.appscreens;
+package ui.GUI.Screens.AppScreens;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
 
@@ -9,25 +10,28 @@ import javax.swing.*;
 
 import model.pet.Egg;
 import model.pet.Pet;
-import ui.gui.App;
-import ui.gui.MainApp;
-import ui.gui.screens.AppScreen;
-import ui.gui.screens.customizedpanel.RoundedButton;
-import ui.gui.screens.customizedpanel.RoundedPanel;
-import ui.gui.screens.customizedpanel.RoundedTextField;
+import ui.GUI.App;
+import ui.GUI.MainApp;
+import ui.GUI.Screens.AppScreen;
+import ui.GUI.Screens.CustomizedPanel.RoundedButton;
+import ui.GUI.Screens.CustomizedPanel.RoundedPanel;
+import ui.GUI.Screens.CustomizedPanel.RoundedTextField;
 
 public class HatchScreen extends AppScreen {
+    private MainApp mainApp;
 
     // Hatching new Pet Screen
     public HatchScreen(MainApp app) {
         super(app, "");
+        this.mainApp = super.app;
 
         JPanel mainPanel = new JPanel();
         mainPanel.setOpaque(false);
         mainPanel.setBorder(new EmptyBorder(150, 0, 0, 0));
 
         addMainPanel(mainPanel);
-        add(mainPanel);
+        add(mainPanel)
+        ;
         createMenuButton();
     }
 
@@ -40,8 +44,8 @@ public class HatchScreen extends AppScreen {
 
         JLabel menu = new JLabel("Name Your Pet");
         menu.setFont(new Font(menu.getFont().getName(), 1, 32));
-        menu.setForeground(App.TEXT_YELLOW);
-        menu.setHorizontalAlignment(SwingConstants.CENTER);
+        menu.setForeground(App.TEXT_YELLOW); 
+        menu.setHorizontalAlignment(SwingConstants.CENTER); 
         menu.setBorder(new EmptyBorder(0, 0, 20, 0));
         buttonPanel.add(menu, BorderLayout.CENTER);
 
@@ -51,11 +55,11 @@ public class HatchScreen extends AppScreen {
     }
 
     // MODIFIES: this
-    // EFFECTS: add Save Button, which
-    // on Pressed, creates new Pet with given name in EntryField
-    // throw error message if field is empty
+    // EFFECTS: add Save Button, which 
+    //          on Pressed, creates new Pet with given name in EntryField
+    //                      throw error message if field is empty
     private void addSaveButton(JPanel mainPanel, JTextField nameField) {
-        JButton saveButton = new RoundedButton(28, App.SUB_GREEN, App.MAIN_GREEN, App.TEXT_GREEN, "Hatch");
+        JButton saveButton = new RoundedButton(28, App.SUB_GREEN, App.MAIN_GREEN, App.TEXT_GREEN,"Hatch");
         saveButton.addActionListener(e -> {
             String petName = nameField.getText();
             if (petName.isEmpty()) {
@@ -72,6 +76,7 @@ public class HatchScreen extends AppScreen {
         });
         mainPanel.add(saveButton);
     }
+
 
     // MODIFIES: this
     // EFFECTS: add EntryField, which display the typed name

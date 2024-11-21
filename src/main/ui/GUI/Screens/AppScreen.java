@@ -1,6 +1,7 @@
-package ui.gui.screens;
+package ui.GUI.Screens;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Image;
 import java.awt.*;
@@ -8,11 +9,14 @@ import java.awt.*;
 import javax.swing.*;
 
 import model.Game;
-import ui.gui.MainApp;
-import ui.gui.screens.navbutton.GoToButton;
+import ui.GUI.App;
+import ui.GUI.MainApp;
+import ui.GUI.PetGameApp;
+import ui.GUI.Screens.NavButton.ExitButton;
+import ui.GUI.Screens.NavButton.GoToButton;
 
 public abstract class AppScreen extends JPanel {
-    protected static String BACKGROUND_PATH = "src\\main\\ui\\GUI\\PetImage\\BackGround\\BackGroundScreen.png";
+    protected String BACKGROUND_PATH = "src\\main\\ui\\GUI\\PetImage\\BackGround\\BackGroundScreen.png";
     protected MainApp app;
     protected Game game;
 

@@ -1,4 +1,4 @@
-package ui.gui.screens.customizedpanel;
+package ui.GUI.Screens.CustomizedPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,8 +10,7 @@ public class RoundedButton extends JButton {
     private Color textColor;
     private int borderThickness;
 
-    // Customised JButton with given radius, border color, fill color, text color, and
-    // button name
+    // Constructor that accepts radius, border color, fill color, text color, and button name
     public RoundedButton(int radius, Color borderColor, Color fillColor, Color textColor, String name) {
         super(name);
         this.radius = radius;
@@ -30,7 +29,7 @@ public class RoundedButton extends JButton {
         Graphics2D g2 = (Graphics2D) g;
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
-        if (!getModel().isPressed()) {
+        if (!getModel().isPressed()){
             g2.setColor(fillColor);
         } else {
             g2.setColor(borderColor);
@@ -54,7 +53,7 @@ public class RoundedButton extends JButton {
         Graphics2D g2 = (Graphics2D) g;
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
-        if (getModel().isPressed()) {
+        if (getModel().isPressed()){
             g2.setColor(fillColor);
         } else {
             g2.setColor(borderColor);

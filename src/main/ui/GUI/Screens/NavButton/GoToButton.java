@@ -1,6 +1,10 @@
-package ui.gui.screens.navbutton;
+package ui.GUI.Screens.NavButton;
+import javax.swing.*;
 
-import ui.gui.App;
+import ui.GUI.App;
+import ui.GUI.MainApp;
+
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -18,3 +22,4 @@ public class GoToButton extends Button {
     }
 
 }
+

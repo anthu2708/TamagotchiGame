@@ -1,14 +1,13 @@
-package ui.gui.screens.customizedpanel;
+package ui.GUI.Screens.CustomizedPanel;
 
 import javax.swing.plaf.basic.BasicScrollBarUI;
 
-import ui.gui.App;
+import ui.GUI.App;
 
 import java.awt.*;
 import javax.swing.*;
 
 public class CustomScrollBarUI extends BasicScrollBarUI {
-    // Override ScrollBar to adjust display
     @Override
     protected void configureScrollBarColors() {
         this.thumbColor = App.SUB_YELLOW; // Custom thumb color

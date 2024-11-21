@@ -7,11 +7,12 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import model.pet.Pet;
+import persistence.JsonReader;
 import persistence.Writable;
 
 /**
  * The House class represents a collection of pets within a household.
- * It provides methods to add, remove, and retrieve pets, as well as to get
+ * It provides methods to add, remove, and retrieve pets, as well as to get 
  * the total number of pets in the house.
  */
 
@@ -62,7 +63,7 @@ public class House implements Writable {
     public JSONObject toJson() {
         JSONObject houseJson = new JSONObject();
         JSONArray petsArray = new JSONArray();
-        for (Pet p : pets) {
+        for (Pet p: pets) {
             JSONObject petJson = p.toJson();
             petsArray.put(petJson);
         }

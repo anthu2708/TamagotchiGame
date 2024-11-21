@@ -1,15 +1,20 @@
-package ui.gui.screens.gamescreens;
+package ui.GUI.Screens.GameScreens;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
-import ui.gui.App;
-import ui.gui.PetGameApp;
-import ui.gui.screens.GameScreen;
-import ui.gui.screens.customizedpanel.RoundedButton;
-import ui.gui.screens.customizedpanel.RoundedPanel;
+import model.CoinManager;
+import model.Game;
+import model.pet.Pet;
+import ui.GUI.App;
+import ui.GUI.PetGameApp;
+import ui.GUI.Screens.GameScreen;
+import ui.GUI.Screens.CustomizedPanel.RoundedButton;
+import ui.GUI.Screens.CustomizedPanel.RoundedPanel;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class PlayScreen extends GameScreen {
 
@@ -40,7 +45,7 @@ public class PlayScreen extends GameScreen {
     // EFFECTS: add new Button with Label name to specified JPanel
     // when pressed, play the function specified in name
     private void addButton(JPanel buttonPanel, String name) {
-        JButton button = new RoundedButton(32, App.SUB_YELLOW, App.MAIN_YELLOW, App.TEXT_YELLOW, name);
+        JButton button = new RoundedButton(32, App.SUB_YELLOW, App.MAIN_YELLOW,App.TEXT_YELLOW, name);
         button.setPreferredSize(new Dimension(250, 35));
         if (name == "Play") {
             button.addActionListener(e -> play());
@@ -55,11 +60,11 @@ public class PlayScreen extends GameScreen {
     private void pet() {
         pet.pet();
         JOptionPane.showMessageDialog(this,
-                pet.getName()
-                        + " loves our time together! \n"
-                        + "Earned "
-                        + PET_COIN
-                        + " coins!");
+                pet.getName() 
+                + " loves our time together! \n" 
+                + "Earned " 
+                + PET_COIN 
+                + " coins!");
         game.getCoinManager().add(PET_COIN);
         reloadScreens("GameScreen");
     }
@@ -70,11 +75,11 @@ public class PlayScreen extends GameScreen {
         pet.play();
         game.getCoinManager().add(PLAY_COIN);
         JOptionPane.showMessageDialog(this,
-                pet.getName()
-                        + " loves playing together! \n"
-                        + "Earned "
-                        + PLAY_COIN
-                        + " coins!");
+                pet.getName() 
+                + " loves playing together! \n" 
+                + "Earned " 
+                + PLAY_COIN 
+                + " coins!");
         reloadScreens("GameScreen");
     }
 

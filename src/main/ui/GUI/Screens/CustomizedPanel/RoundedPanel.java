@@ -1,4 +1,7 @@
-package ui.gui.screens.customizedpanel;
+package ui.GUI.Screens.CustomizedPanel;
+
+import javax.swing.*;
+import java.awt.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -7,13 +10,15 @@ public class RoundedPanel extends JPanel {
     private int radius;
     private Color borderColor;
     private Color fillColor;
+    private Color textColor;
     private int borderThickness;
 
-    // Customized panel that accepts radius, border color, and fill color
+    // Constructor that accepts radius, border color, and fill color
     public RoundedPanel(int radius, Color borderColor, Color fillColor) {
         this.radius = radius;
         this.borderColor = borderColor;
         this.fillColor = fillColor;
+        this.textColor = textColor;
         this.borderThickness = 5;  // Set border thickness to 5px
         setOpaque(false);  // Make the panel non-opaque to support rounded edges
     }

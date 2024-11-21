@@ -1,4 +1,4 @@
-package ui.gui.screens.appscreens;
+package ui.GUI.Screens.AppScreens;
 
 import java.awt.Dimension;
 import java.awt.GridBagLayout;
@@ -9,10 +9,10 @@ import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import ui.gui.App;
-import ui.gui.MainApp;
-import ui.gui.screens.AppScreen;
-import ui.gui.screens.customizedpanel.*;
+import ui.GUI.App;
+import ui.GUI.MainApp;
+import ui.GUI.Screens.CustomizedPanel.*;
+import ui.GUI.Screens.AppScreen;
 
 public class HomeScreen extends AppScreen {
 

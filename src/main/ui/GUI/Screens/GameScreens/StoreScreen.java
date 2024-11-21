@@ -1,19 +1,21 @@
-package ui.gui.screens.gamescreens;
+package ui.GUI.Screens.GameScreens;
 
 import model.CoinManager;
 import model.Store;
 import model.supplies.Food;
 import model.supplies.Pill;
-import ui.gui.App;
-import ui.gui.PetGameApp;
-import ui.gui.screens.GameScreen;
-import ui.gui.screens.customizedpanel.CustomScrollBarUI;
-import ui.gui.screens.customizedpanel.RoundedButton;
-import ui.gui.screens.customizedpanel.RoundedPanel;
+import ui.GUI.App;
+import ui.GUI.PetGameApp;
+import ui.GUI.Screens.GameScreen;
+import ui.GUI.Screens.CustomizedPanel.CustomScrollBarUI;
+import ui.GUI.Screens.CustomizedPanel.RoundedButton;
+import ui.GUI.Screens.CustomizedPanel.RoundedPanel;
 
 import javax.swing.*;
 import javax.swing.border.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
 
 public class StoreScreen extends GameScreen {
@@ -27,6 +29,7 @@ public class StoreScreen extends GameScreen {
         this.store = new Store();
         this.coinManager = game.getCoinManager();
 
+
         addScrollPane();
         createStoreCoinButton();
     }
@@ -37,18 +40,18 @@ public class StoreScreen extends GameScreen {
         JPanel storePanel = getStorePanel();
         storePanel.setBackground(App.BACKGROUND_BLUE);
 
-        JScrollPane scrollPane = new JScrollPane(storePanel);
+        JScrollPane scrollPane = new JScrollPane(storePanel); 
 
         JScrollBar verticalBar = scrollPane.getVerticalScrollBar();
         verticalBar.setPreferredSize(new Dimension(10, 0));
-        verticalBar.setUI(new CustomScrollBarUI());
+        verticalBar.setUI(new CustomScrollBarUI()); 
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         add(scrollPane);
     }
 
-    // MODIFIES: this
-    // EFFECTS: generate and add Store Panel with coin
-    // and PillPanel all Pills to choose from
+    // MODIFIES: this 
+    // EFFECTS: generate and add Store Panel with coin 
+    //          and PillPanel all Pills to choose from
     private JPanel getStorePanel() {
 
         List<Food> foods = store.getFood();
@@ -69,11 +72,11 @@ public class StoreScreen extends GameScreen {
         return itemPanel;
     }
 
-    // MODIFIES: this
+    // MODIFIES: this 
     // EFFECTS: generate and add a Food Panel
-    // when purchase Food button is pressed,
-    // if not enough coin, throw message
-    // else, add to Fridge and go back to menu
+    //          when purchase Food button is pressed,
+    //          if not enough coin, throw message
+    //          else, add to Fridge and go back to menu
     private void getFoodButton(JPanel mainPanel, Food food) {
         JPanel smallPanel = new RoundedPanel(48, App.SUB_YELLOW, App.MAIN_YELLOW);
 
@@ -81,7 +84,7 @@ public class StoreScreen extends GameScreen {
         int nutriVal = food.getNutritionValue();
         int cost = food.getCost();
 
-        smallPanel.setBorder(new EmptyBorder(20, 20, 30, 20));
+        smallPanel.setBorder(new EmptyBorder(  20, 20, 30, 20));
         smallPanel.setLayout(new GridLayout(4, 1, 0, 0));
         smallPanel.add(new JLabel(name));
         smallPanel.add(new JLabel("Hunger Point: " + nutriVal));
@@ -93,11 +96,11 @@ public class StoreScreen extends GameScreen {
         mainPanel.add(smallPanel);
     }
 
-    // MODIFIES: this
+    // MODIFIES: this 
     // EFFECTS: generate and add a Pill Panel
-    // when purchase Pill button is pressed,
-    // if not enough coin, throw message
-    // else, add to MedBox and go back to menu
+    //          when purchase Pill button is pressed,
+    //          if not enough coin, throw message
+    //          else, add to MedBox and go back to menu
     private void getPillButton(JPanel mainPanel, Pill pill) {
         JPanel smallPanel = new RoundedPanel(48, App.SUB_YELLOW, App.MAIN_YELLOW);
         String name = pill.getName();
@@ -106,7 +109,7 @@ public class StoreScreen extends GameScreen {
         int happinessValue = pill.getHappiness();
         int cost = pill.getCost();
 
-        smallPanel.setBorder(new EmptyBorder(20, 20, 20, 20));
+        smallPanel.setBorder(new EmptyBorder(  20, 20, 20, 20));
         smallPanel.setLayout(new GridLayout(6, 1, 10, 0));
         smallPanel.add(new JLabel(name));
         smallPanel.add(new JLabel("Hunger Point: " + nutriVal));
@@ -121,10 +124,10 @@ public class StoreScreen extends GameScreen {
         mainPanel.add(smallPanel);
     }
 
-    // MODIFIES: this
+    // MODIFIES: this 
     // EFFECTS: handle purchase:
-    // if not enough coin, throw message
-    // else, add to MedBox and go back to menu
+    //          if not enough coin, throw message
+    //          else, add to MedBox and go back to menu
     private void handlePurchase(Object item, int cost, String itemType) {
         int coin = coinManager.getValue();
         if (coin < cost) {
@@ -144,5 +147,8 @@ public class StoreScreen extends GameScreen {
             super.app.showScreen("GameMenuScreen");
         }
     }
+
+
+    
 
 }
