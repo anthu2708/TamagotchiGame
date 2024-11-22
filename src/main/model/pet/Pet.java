@@ -8,6 +8,8 @@ import model.supplies.Food;
 import model.supplies.Pill;
 import persistence.Writable;
 
+import java.util.*;
+
 // Represents a Pet that has a name, hunger, happiness, health, and cleanliness levels, along with an alive state.
 public abstract class Pet implements Writable {
     protected String name;           // Pet's name
@@ -103,6 +105,20 @@ public abstract class Pet implements Writable {
                 + "Happiness: " + happiness + "\n"
                 + "Health: " + health + "\n"
                 + "Cleanliness: " + cleanliness;
+    }
+
+    // MODIFIES: this
+    // EFFECTS: Returns a string summarizing the pet's status
+    // including name, type, hunger, happiness, health, and cleanliness.
+    public List<String> getStatusList() {
+
+        List<String> status = new ArrayList<>();
+        status.add(name.toUpperCase() + " - " + type);
+        status.add("Hunger: " + hunger + "\n");
+        status.add("Happiness: " + happiness + "\n");
+        status.add("Health: " + health + "\n");
+        status.add("Cleanliness: " + cleanliness + "\n");
+        return status;
     }
 
     // EFFECTS: Returns true if the pet's health is below 20, indicating it needs a pill.

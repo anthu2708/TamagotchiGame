@@ -68,7 +68,7 @@ public class StatusScreen extends AppScreen {
     // EFFECTS: adding Pets panel with status, and delete button for each pet in
     // house
     private void addStatusPanel(JPanel jpanel, Pet pet) {
-        List<String> status = getStatus(pet);
+        List<String> status = pet.getStatusList();
         JPanel smallPanel = new RoundedPanel(40, App.SUB_YELLOW, App.MAIN_YELLOW);
         smallPanel.setLayout(new GridLayout(8, 1, 10, 0));
         smallPanel.setBorder(new EmptyBorder(20, 40, 20, 40));
@@ -142,25 +142,25 @@ public class StatusScreen extends AppScreen {
         }
     }
 
-    // MODIFIES: this
-    // EFFECTS: Returns a string summarizing the pet's status
-    // including name, type, hunger, happiness, health, and cleanliness.
-    private List<String> getStatus(Pet pet) {
-        String name = pet.getName();
-        String type = pet.getType();
-        int hunger = pet.getHunger();
-        int happiness = pet.getHappiness();
-        int health = pet.getHealth();
-        int cleanliness = pet.getCleanliness();
+    // // MODIFIES: this
+    // // EFFECTS: Returns a string summarizing the pet's status
+    // // including name, type, hunger, happiness, health, and cleanliness.
+    // private List<String> getStatus(Pet pet) {
+    //     String name = pet.getName();
+    //     String type = pet.getType();
+    //     int hunger = pet.getHunger();
+    //     int happiness = pet.getHappiness();
+    //     int health = pet.getHealth();
+    //     int cleanliness = pet.getCleanliness();
 
-        List<String> status = new ArrayList<>();
-        status.add(name.toUpperCase() + " - " + type);
-        status.add("Hunger: " + hunger + "\n");
-        status.add("Happiness: " + happiness + "\n");
-        status.add("Health: " + health + "\n");
-        status.add("Cleanliness: " + cleanliness + "\n");
-        return status;
-    }
+    //     List<String> status = new ArrayList<>();
+    //     status.add(name.toUpperCase() + " - " + type);
+    //     status.add("Hunger: " + hunger + "\n");
+    //     status.add("Happiness: " + happiness + "\n");
+    //     status.add("Health: " + health + "\n");
+    //     status.add("Cleanliness: " + cleanliness + "\n");
+    //     return status;
+    // }
 
     // EFFECTS: return Attention String
     private String getAttention(Pet pet) {

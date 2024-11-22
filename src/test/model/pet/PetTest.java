@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.List;
+
 import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -162,6 +164,17 @@ public class PetTest {
                     + "Health: 100\n"
                     + "Cleanliness: 100";
         assertEquals(returnString, meap.getStatus());
+    }
+
+    @Test
+    void testGetStatusList() {
+        List<String> statusList = meap.getStatusList();
+
+        assertEquals("FLUFFY - Meap", statusList.get(0));
+        assertEquals("Hunger: 50\n", statusList.get(1));
+        assertEquals("Happiness: 50\n", statusList.get(2));
+        assertEquals("Health: 100\n", statusList.get(3));
+        assertEquals("Cleanliness: 100\n", statusList.get(4));
     }
 
     @Test
