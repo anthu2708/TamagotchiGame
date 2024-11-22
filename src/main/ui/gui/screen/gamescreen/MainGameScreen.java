@@ -65,25 +65,25 @@ public class MainGameScreen extends GameScreen {
 
     // EFFECTS: return the correct image based on the Pet's Status
     private String handleImagePath() {
-        String source = "src\\main\\ui\\GUI\\PetImage\\";
+        String source = "data/petimage/";
         String petType = pet.getType();
         String petStatus = "";
         if (pet.needsPill()) {
-            petStatus = "Injuried";
+            petStatus = "injuredpet";
         } else if (pet.needsAttention()[0] && pet.needsAttention()[1]) {
-            petStatus = "HungryDirty";
+            petStatus = "hungrydirtypet";
         } else if (pet.needsAttention()[0]) {
-            petStatus = "Hungry";
+            petStatus = "hungrypet";
         } else if (pet.needsAttention()[1]) {
-            petStatus = "Dirty";
+            petStatus = "dirtypet";
         } else if (pet.needsAttention()[2]) {
-            petStatus = "Sad";
+            petStatus = "sadpet";
         }
 
         if (petStatus == "") {
             return source + petType + ".png";
         } else {
-            return source + petStatus + "\\" + petType + ".png";
+            return source + petStatus + "/" + petType + ".png";
         }
     }
 

@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 public class GameExitButton extends Button {
 
     public GameExitButton(PetGameApp app) {
-        super(app, "src\\main\\ui\\GUI\\PetImage\\BackGround\\XIcon.png");
+        super(app, "data/petimage/bgimage/XIcon.png");
         addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

@@ -1,8 +1,5 @@
 package ui.gui.screen;
 
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
-import java.awt.Image;
 import java.awt.*;
 
 import javax.swing.*;
@@ -12,7 +9,7 @@ import ui.gui.MainApp;
 import ui.gui.screen.navigationbutton.GoToButton;
 
 public abstract class AppScreen extends JPanel {
-    protected String backgroundPath = "src/main/ui/gui/petimage/BackGround/BackGroundScreen.png";
+    protected String backgroundPath = "data/petimage/bgimage/BackGroundScreen.png";
     protected MainApp app;
     protected Game game;
 

@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 public class GoToButton extends Button {
 
     public GoToButton(App app, String screen) {
-        super(app, "src\\main\\ui\\GUI\\PetImage\\BackGround\\HomeIcon.png");
+        super(app, "data/petimage/bgimage/HomeIcon.png");
         App mainApp = super.app;
         addActionListener(new ActionListener() {
             @Override

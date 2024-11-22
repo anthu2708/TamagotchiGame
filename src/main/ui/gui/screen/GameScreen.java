@@ -10,7 +10,7 @@ import ui.gui.PetGameApp;
 import ui.gui.screen.navigationbutton.GoToButton;
 
 public class GameScreen extends JPanel {
-    protected String backgroundPath = "src\\main\\ui\\GUI\\PetImage\\BackGround\\BackGroundScreen.png";
+    protected String backgroundPath = "data/petimage/bgimage/BackGroundScreen.png";
     protected PetGameApp app;
     protected Game game;
     protected Pet pet;
