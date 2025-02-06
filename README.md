@@ -1,24 +1,64 @@
-# Virtual Pet Game
+# Virtual Pet Game 🐾🕹️
 
-## Project Description
+**Raise, nurture, and care for your virtual pet!**  
+This game brings back the nostalgic charm of Tamagotchi-style pet care, where you must keep your pet happy, healthy, and entertained. If neglected, your pet can become sick or even worse—so be a responsible owner and ensure your companion thrives!
 
-This application will simulate a virtual pet (Tamagotchi) that the user must take care of by feeding it, playing with it, and keeping it happy. Over time, the pet will have various needs, and if left unmet, it can become ill or even die. The user will be able to interact with the pet through commands and see its current health status.
+---
 
-## Who Will Use It?
+## 🛠 Project Story
+This project was created to recreate the joy of classic virtual pet games while introducing modern features that enhance the experience. Inspired by early handheld games, this simulation allows players to build emotional connections with their digital pets. This was created as a part of the UBC CPSC210 course, an object-oriented programming class focused on developing software design skills.
 
-This application will be used by anyone who enjoys virtual pets and wants a simple, nostalgic game that involves nurturing and caring for a virtual companion.
+---
 
-## Why It Interests Me
+## 💡 Why This Game?
+Caring for a virtual pet brings back fond memories of childhood, evoking the nostalgia of early digital companions like Tamagotchi. This project explores how contemporary gaming can enhance storytelling and player interaction while retaining the classic pet-care mechanics.
 
-The idea of nurturing a virtual pet sparks fond memories of early handheld games like Tamagotchi. It evokes a sense of nostalgia, reminding me of the joy and responsibility of caring for a digital companion. I am excited about the opportunity to recreate that emotional connection and playful experience while introducing fresh challenges and features. This project not only pays homage to cherished childhood memories but also explores how contemporary gaming can enhance storytelling and interaction, bridging the gap between the past and present.
+---
 
-## User Stories
+## 🚀 What It Does
 
-- As a user, I want to be able to add a new pet to my house and give it a name.
-- As a user, I want to view my pet lists with pets' statuses, including hunger, happiness, cleanliness, and health levels.
-- As a user, I want to be able to choose a pet and clean, play with, heal, and feed it.
-- As a user, I want to be notified when my pet requires attention or is injured.
-- As a user, I want to add food to the fridge and pills to medicine box using coins earned from taking care of the pet and track the quantity of each item.
-- As a user, I want to view all the items available in the fridge and medicine box, and the quantity of each item .
-- As a user, when I select quit option from application menu I want to be reminded to save my game progress to file, which including pets, their state and other items in inventory. I want to have the option to do so or not.
-- As a user, when I first start the application, I want to be given the option to load my game progress from file.
+Virtual Pet Game is an interactive simulation where players raise their own virtual pet. The goal is to nurture, feed, play with, and take care of your pet while managing resources.
+
+### 🏡 **Pet Care System**
+- Adopt and name your pet.
+- Monitor your pet’s health, happiness, hunger, and cleanliness levels.
+- Perform daily actions: **feed, play, clean, and heal** your pet.
+
+### 🍎 **Inventory Management**
+- Store food in the fridge and medicine in the medicine box.
+- Earn coins by taking good care of your pet and use them to buy supplies.
+- Track inventory and restock when needed.
+
+### 🔔 **Smart Notifications**
+- Receive alerts when your pet needs attention or falls ill.
+- Make quick decisions to prevent your pet from getting sick.
+
+### 💾 **Save & Load Progress**
+- Save game progress, including pets and inventory, before quitting.
+- Load saved progress upon starting the game.
+
+---
+
+## 🔑 Key Features
+
+- **Interactive Pet Simulation:** Experience the joy of raising a digital pet.  
+- **Engaging Gameplay Loop:** Keep track of pet needs, earn coins, and manage inventory.  
+- **Immersive Experience:** Notifications ensure you never forget about your pet.  
+
+---
+
+## 🏗️ Built With 
+
+- **Language:** Java  
+- **GUI Framework:** Java Swing for the user interface.  
+- **Testing:** JUnit for unit testing to ensure code reliability.  
+
+---
+
+## 🏁 Getting Started
+
+1. Clone the repository to your local machine.
+git clone https://github.com/anthu2708/TamagotchiGame.git
+2. Run the main application file to start the game:
+java ..\src\main\ui\gui\MainApp.java
+3. Enjoy taking care of your virtual pet!
