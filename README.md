@@ -58,7 +58,11 @@ Virtual Pet Game is an interactive simulation where players raise their own virt
 ## 🏁 Getting Started
 
 1. Clone the repository to your local machine.
+```bash
 git clone https://github.com/anthu2708/TamagotchiGame.git
+```
 2. Run the main application file to start the game:
+```bash
 java ..\src\main\ui\gui\MainApp.java
+```
 3. Enjoy taking care of your virtual pet!
