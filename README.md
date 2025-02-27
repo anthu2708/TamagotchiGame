@@ -1,7 +1,9 @@
 # Virtual Pet Game 🐾🕹️
 
 **Raise, nurture, and care for your virtual pet!**  
+
 This game brings back the nostalgic charm of Tamagotchi-style pet care, where you must keep your pet happy, healthy, and entertained. If neglected, your pet can become sick or even worse—so be a responsible owner and ensure your companion thrives!
+
 ![alt text](projectPics/header.png)
 ---
 
