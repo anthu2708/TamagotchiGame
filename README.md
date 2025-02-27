@@ -2,7 +2,7 @@
 
 **Raise, nurture, and care for your virtual pet!**  
 This game brings back the nostalgic charm of Tamagotchi-style pet care, where you must keep your pet happy, healthy, and entertained. If neglected, your pet can become sick or even worse—so be a responsible owner and ensure your companion thrives!
-
+![alt text](projectPics/header.png)
 ---
 
 ## 🛠 Project Story
@@ -66,3 +66,44 @@ git clone https://github.com/anthu2708/TamagotchiGame.git
 java ..\src\main\ui\gui\MainApp.java
 ```
 3. Enjoy taking care of your virtual pet!
+
+---
+
+## Screenshot
+
+##### Landing Page
+![alt text](projectPics/Picture1.png)
+
+##### Main menu
+![alt text](<projectPics/Main menu.png>)
+
+##### Hatch (add) Pet
+![alt text](projectPics/Hatch.png)
+
+##### Pets Menu
+![alt text](projectPics/House.png)
+
+##### Pet Screen (with different state)
+![alt text](<projectPics/Default pet.png>)
+![alt text](projectPics/hungry.png)
+![alt text](projectPics/drity.png)
+![alt text](projectPics/sick.png)
+
+##### Pet Status Screen
+![alt text](<projectPics/pet status.png>)
+
+##### Store screen
+![alt text](projectPics/store.png)
+
+##### Fridge 
+![alt text](projectPics/fridge.png)
+
+##### Medicine Box
+![alt text](projectPics/medbox.png)
+
+##### Save Game Screen
+![alt text](projectPics/savegame.png)
+
+
+
+
