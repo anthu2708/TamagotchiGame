@@ -1,65 +1,36 @@
-# Virtual Pet Game 🐾🕹️
+# Virtual Pet Game 🐾🕹️  
+A Java-based Tamagotchi-style desktop game where you raise, care for, and interact with your own digital pet. Stay responsible — if you neglect your pet, consequences follow! 
+Relive the charm of early digital pets with a modern twist. Inspired by Tamagotchi, this game lets you build emotional connections with your pet through an engaging, real-time simulation. Originally developed as a **CPSC210 (OOP Design)** course project at UBC.
 
-**Raise, nurture, and care for your virtual pet!**  
+### Key Features
 
-This game brings back the nostalgic charm of Tamagotchi-style pet care, where you must keep your pet happy, healthy, and entertained. If neglected, your pet can become sick or even worse—so be a responsible owner and ensure your companion thrives!
+##### 🐶 Pet Simulation  
+- Adopt and name your own pet  
+- Monitor health, hunger, happiness, and cleanliness  
+- Perform daily actions: **feed, clean, play, heal**
 
-![alt text](projectPics/header.png)
----
+##### 🍎 Inventory System  
+- Store food in the fridge and medicine in the med box  
+- Earn coins to buy supplies and manage inventory
 
-## 🛠 Project Story
-This project was created to recreate the joy of classic virtual pet games while introducing modern features that enhance the experience. Inspired by early handheld games, this simulation allows players to build emotional connections with their digital pets. This was created as a part of the UBC CPSC210 course, an object-oriented programming class focused on developing software design skills.
+##### 🔔 Smart Alerts  
+- Get notified when your pet needs attention
 
----
-
-## 💡 Why This Game?
-Caring for a virtual pet brings back fond memories of childhood, evoking the nostalgia of early digital companions like Tamagotchi. This project explores how contemporary gaming can enhance storytelling and player interaction while retaining the classic pet-care mechanics.
-
----
-
-## 🚀 What It Does
-
-Virtual Pet Game is an interactive simulation where players raise their own virtual pet. The goal is to nurture, feed, play with, and take care of your pet while managing resources.
-
-### 🏡 **Pet Care System**
-- Adopt and name your pet.
-- Monitor your pet’s health, happiness, hunger, and cleanliness levels.
-- Perform daily actions: **feed, play, clean, and heal** your pet.
-
-### 🍎 **Inventory Management**
-- Store food in the fridge and medicine in the medicine box.
-- Earn coins by taking good care of your pet and use them to buy supplies.
-- Track inventory and restock when needed.
-
-### 🔔 **Smart Notifications**
-- Receive alerts when your pet needs attention or falls ill.
-- Make quick decisions to prevent your pet from getting sick.
-
-### 💾 **Save & Load Progress**
-- Save game progress, including pets and inventory, before quitting.
-- Load saved progress upon starting the game.
+##### 💾 Persistent Save  
+- Save/load progress including pet status and items
 
 ---
 
-## 🔑 Key Features
-
-- **Interactive Pet Simulation:** Experience the joy of raising a digital pet.  
-- **Engaging Gameplay Loop:** Keep track of pet needs, earn coins, and manage inventory.  
-- **Immersive Experience:** Notifications ensure you never forget about your pet.  
-
----
-
-## 🏗️ Built With 
+## 🧱 Tech Stack
 
 - **Language:** Java  
-- **GUI Framework:** Java Swing for the user interface.  
-- **Testing:** JUnit for unit testing to ensure code reliability.  
+- **UI:** Java Swing  
+- **Testing:** JUnit  
 
 ---
 
-## 🏁 Getting Started
+## 🚀 Getting Started
 
-1. Clone the repository to your local machine.
 ```bash
 git clone https://github.com/anthu2708/TamagotchiGame.git
 ```
@@ -73,39 +44,37 @@ java ..\src\main\ui\gui\MainApp.java
 
 ## Screenshot
 
-##### Landing Page
-![alt text](projectPics/Picture1.png)
+### 🖼️ Screenshots
 
-##### Main menu
-![alt text](<projectPics/Main menu.png>)
+#### Main Screens
 
-##### Hatch (add) Pet
-![alt text](projectPics/Hatch.png)
+| Landing Page | Main Menu | Hatch Pet |
+|--------------|-----------|-----------|
+| <img src="projectPics/Picture1.png" width="150" /> | <img src="projectPics/Main%20menu.png" width="150" /> | <img src="projectPics/Hatch.png" width="150" /> |
 
-##### Pets Menu
-![alt text](projectPics/House.png)
+---
 
-##### Pet Screen (with different state)
-![alt text](<projectPics/Default pet.png>)
-![alt text](projectPics/hungry.png)
-![alt text](projectPics/drity.png)
-![alt text](projectPics/sick.png)
+#### Pet System
 
-##### Pet Status Screen
-![alt text](<projectPics/pet status.png>)
+| Pet House | Pet Status | Store |
+|-----------|------------|-------|
+| <img src="projectPics/House.png" width="150" /> | <img src="projectPics/pet%20status.png" width="150" /> | <img src="projectPics/store.png" width="150" /> |
 
-##### Store screen
-![alt text](projectPics/store.png)
+---
 
-##### Fridge 
-![alt text](projectPics/fridge.png)
+#### Pet States
 
-##### Medicine Box
-![alt text](projectPics/medbox.png)
+<p align="left">
+  <img src="projectPics/Default%20pet.png" width="150" />
+  <img src="projectPics/hungry.png" width="150" />
+  <img src="projectPics/drity.png" width="150" />
+  <img src="projectPics/sick.png" width="150" />
+</p>
 
-##### Save Game Screen
-![alt text](projectPics/savegame.png)
+---
 
+##### Inventory & Save
 
-
-
+| Fridge | Medicine Box | Save Game |
+|--------|---------------|-----------|
+| <img src="projectPics/fridge.png" width="150" /> | <img src="projectPics/medbox.png" width="150" /> | <img src="projectPics/savegame.png" width="150" /> |
